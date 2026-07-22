@@ -1,0 +1,237 @@
+<!--
+  טופס חי — אבחון עסקי · שאלון קצר
+  זו הגרסה האינטראקטיבית לאינטרנט (לא להדפסה — לזה יש את "אבחון עסקי — שאלון קצר.html").
+  ה-backend מחובר: ACTION_URL בתחתית הקובץ מצביע על תיבת ה-Apps Script (שלב 2 הושלם 22.07.2026).
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>אבחון עסקי — Inside the Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F5F0E8;--paper-2:#FBF8F3;--ink:#1E1B18;--ink-soft:#5A534C;
+    --ink-faint:#918878;--terracotta:#C0563B;--rule:#DED5C7;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--paper)}
+  body{
+    margin:0;direction:rtl;text-align:right;
+    font-family:"Heebo",system-ui,"Segoe UI",Arial,sans-serif;
+    font-weight:400;color:var(--ink);background:var(--paper);
+    line-height:1.7;font-size:17px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:56px 24px 96px}
+
+  header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:36px}
+  .brand{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);font-weight:500;direction:ltr;text-align:right;margin:0 0 14px}
+  h1{font-size:32px;line-height:1.25;font-weight:700;margin:0 0 12px;letter-spacing:-.01em}
+  .sub{color:var(--ink-soft);margin:0;max-width:56ch;font-weight:300}
+
+  .cover{margin-bottom:8px}
+  .cov-block{margin:0 0 32px}
+  .lbl{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--terracotta);margin:0 0 12px;border-bottom:1px solid var(--rule);padding-bottom:8px}
+  .lead{font-size:19px;font-weight:500;line-height:1.55;margin:0;max-width:64ch}
+  .lead b{font-weight:700}
+  ul.gains{list-style:none;margin:0;padding:0}
+  ul.gains li{position:relative;padding:0 22px 0 0;margin:0 0 13px;font-size:17.5px;font-weight:500;max-width:62ch}
+  ul.gains li:last-child{margin-bottom:0}
+  ul.gains li::before{content:"";position:absolute;right:0;top:13px;width:11px;height:2px;background:var(--terracotta)}
+  ul.gains li b{font-weight:700}
+  .bridge{margin:0;color:var(--ink-soft);font-weight:300;max-width:62ch}
+
+  .who{display:flex;gap:18px;align-items:center}
+  .who .photo{flex:0 0 auto;width:68px;height:68px;border-radius:50%;overflow:hidden;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:23px}
+  .who .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .who .nm{font-weight:700;margin:0 0 5px;font-size:17px}
+  .who .bio{margin:0;color:var(--ink-soft);font-weight:400;max-width:58ch;font-size:16px;line-height:1.6}
+  .who .bio b{color:var(--ink);font-weight:700}
+
+  /* ── טופס ── */
+  .q-head{border-top:2px solid var(--ink);padding-top:34px;margin-bottom:30px}
+  .q-head h2{font-size:24px;font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
+  .q-sub{margin:0;color:var(--ink-soft);font-weight:300;font-size:15.5px;max-width:64ch}
+  .q-note{margin:8px 0 0;color:var(--ink-faint);font-weight:300;font-size:13.5px}
+
+  .sec-lbl{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--terracotta);margin:30px 0 16px;border-bottom:1px solid var(--rule);padding-bottom:8px}
+
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+  @media(max-width:520px){.cgrid{grid-template-columns:1fr}}
+  .field{margin:0}
+  .field label{display:block;font-weight:500;margin:0 0 7px;font-size:16px}
+  .req{color:var(--terracotta)}
+  input[type=text],input[type=email],input[type=tel],textarea{
+    width:100%;font-family:inherit;font-size:16px;color:var(--ink);
+    background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;
+    padding:11px 13px;line-height:1.6;
+  }
+  textarea{min-height:74px;resize:vertical}
+  input:focus,textarea:focus{outline:none;border-color:var(--terracotta);box-shadow:0 0 0 2px rgba(192,86,59,.16)}
+
+  ol.qform{list-style:none;margin:22px 0 0;padding:0;counter-reset:q}
+  ol.qform>li{position:relative;padding:0 44px 0 0;margin:0 0 24px}
+  ol.qform>li::before{
+    counter-increment:q;content:counter(q);
+    position:absolute;right:0;top:0;width:30px;height:30px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:#fff;background:var(--terracotta);
+    border-radius:50%;direction:ltr;
+  }
+  ol.qform>li label{display:block;font-weight:500;margin:0 0 9px;line-height:1.5}
+  ol.qform>li label .hint{display:block;font-weight:300;color:var(--ink-soft);font-size:14.5px;margin-top:3px}
+
+  .consent{display:flex;gap:11px;align-items:flex-start;margin:6px 0 30px;font-size:15px;color:var(--ink-soft);font-weight:300}
+  .consent input{margin-top:5px;flex:0 0 auto;width:16px;height:16px;accent-color:var(--terracotta)}
+
+  .submit{background:var(--terracotta);color:#fff;border:none;border-radius:3px;padding:15px 34px;font-family:inherit;font-size:17px;font-weight:700;cursor:pointer;transition:filter .15s}
+  .submit:hover{filter:brightness(1.06)}
+  .submit:disabled{opacity:.6;cursor:default}
+
+  #thanks{display:none;padding:24px 0}
+  #thanks h2{font-size:26px;margin:0 0 12px}
+  #thanks p{color:var(--ink-soft);max-width:60ch;margin:0 0 8px;font-weight:300}
+
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-faint);font-weight:300}
+  footer .t{color:var(--terracotta);letter-spacing:.04em}
+
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#7A7166;--rule:#332E28;--terracotta:#D9714F}
+  }
+  :root[data-theme="dark"]{--paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#7A7166;--rule:#332E28;--terracotta:#D9714F}
+  :root[data-theme="light"]{--paper:#F5F0E8;--paper-2:#FBF8F3;--ink:#1E1B18;--ink-soft:#5A534C;--ink-faint:#918878;--rule:#DED5C7;--terracotta:#C0563B}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="brand">Inside the Brand</p>
+  <h1>אבחון עסקי</h1>
+  <p class="sub">מבט על כל העסק — איפה זה תקוע באמת, ומה לתקן קודם.</p>
+</header>
+
+<div id="formwrap">
+
+<section class="cover">
+  <div class="cov-block">
+    <p class="lbl">הסבר קצר</p>
+    <p class="lead">כשעסק נתקע ולא צומח, השאלה הראשונה היא לא "מה לתקן" אלא <b>איפה</b> זה תקוע — בשיווק, בתפעול, במערכות, בלוגיסטיקה או ברווחיות. כמעט תמיד זה לא המקום שהכי כואב, ולרוב זה יותר ממקום אחד. אני מסתכלת על כל העסק כמערכת אחת ומחפשת את השורש — כולל השאלה אם המערכות שמריצות אותך (קופה, מלאי, CRM/ERP, הנהלת חשבונות) מדברות זו עם זו, או שכל אחת עובדת לבד.</p>
+  </div>
+
+  <div class="cov-block">
+    <p class="lbl">מה תקבל ממילוי השאלון?</p>
+    <ul class="gains">
+      <li>תמונת מצב אחת ברורה של כל העסק — אולי בפעם הראשונה.</li>
+      <li>לדעת איפה הכסף נתקע ומה לתקן <b>קודם</b> — לפני שמשקיעים עוד שקל בכיוון הלא נכון.</li>
+      <li>כיוון מסודר להמשך. גם אם נעצור כאן — יוצאים עם נכס ביד, לא עם עוד דוח במגירה.</li>
+    </ul>
+  </div>
+
+  <div class="cov-block">
+    <p class="lbl">קצת עליי</p>
+    <div class="who">
+      <!-- להחלפה בתמונה: החליפי את "גא" ב־ <img src="galia.jpg" alt="גליה ארליך"> -->
+      <div class="photo">גא</div>
+      <div>
+        <p class="nm">גליה ארליך · מובילת אי־קומרס ועסקים דיגיטליים</p>
+        <p class="bio">נעים מאוד. אני בונה עסקים דיגיטליים מבפנים: בשבע השנים האחרונות עזרתי למותגי צריכה, אופנה וקמעונאות לצמוח דרך חיבור בין מסחר, תפעול, טכנולוגיה וחוויית לקוח. ברשת יין הצמחתי הכנסות אונליין מ־<b>₪400K ל־₪1M</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cov-block">
+    <p class="lbl">לפני שנתחיל</p>
+    <p class="bridge">13 שאלות, בערך עשר דקות. אין תשובות נכונות — רק כנות. המילוי עצמו כבר מתחיל להראות איפה העסק תקוע — וזו נקודת הפתיחה של השיחה בינינו.</p>
+  </div>
+</section>
+
+<form id="diag">
+
+  <p class="sec-lbl">הפרטים שלך</p>
+  <div class="cgrid">
+    <div class="field">
+      <label for="name">שם מלא <span class="req">*</span></label>
+      <input type="text" id="name" name="שם מלא" required>
+    </div>
+    <div class="field">
+      <label for="biz">שם העסק <span class="req">*</span></label>
+      <input type="text" id="biz" name="שם העסק" required>
+    </div>
+    <div class="field">
+      <label for="email">אימייל <span class="req">*</span></label>
+      <input type="email" id="email" name="אימייל" required>
+    </div>
+    <div class="field">
+      <label for="phone">טלפון</label>
+      <input type="tel" id="phone" name="טלפון">
+    </div>
+  </div>
+
+  <div class="q-head" style="margin-top:36px">
+    <h2>השאלון</h2>
+    <p class="q-sub">השאלות עוקבות אחרי הכסף והסחורה דרך העסק — מהרגע שמישהו שומע עליך ועד מה שנשאר בקופה. ענה בקצרה, מהבטן.</p>
+    <p class="q-note">* השאלון מנוסח בלשון זכר מטעמי קיצור — ופונה כמובן לנשים וגברים כאחד.</p>
+  </div>
+
+  <ol class="qform">
+    <li><label for="q1">במשפט אחד — למה העסק לא צומח כמו שאתה רוצה?</label><textarea id="q1" name="1. למה העסק לא צומח" required></textarea></li>
+    <li><label for="q2">מה אתה מוכר, ולמי?</label><textarea id="q2" name="2. מה מוכר ולמי" required></textarea></li>
+    <li><label for="q3">למה לקוח בוחר בך ולא במישהו זול יותר?</label><textarea id="q3" name="3. למה בוחרים בך" required></textarea></li>
+    <li><label for="q4">מאיפה מגיעים אליך לקוחות היום?</label><textarea id="q4" name="4. מאיפה מגיעים לקוחות" required></textarea></li>
+    <li><label for="q5">איזה ערוץ הכי חזק — ואיך אתה יודע? <span class="hint">אתר, חנות פיזית, וולט, אינסטגרם, B2B — כל מה שמכניס כסף נחשב.</span></label><textarea id="q5" name="5. הערוץ הכי חזק" required></textarea></li>
+    <li><label for="q6">אילו מערכות מריצות את העסק כיום — והאם הן מדברות זו עם זו? <span class="hint">אתר, קופה, מלאי, CRM/ERP, הנהלת חשבונות, מועדון. מסונכרנות, או כל אחת עובדת לבד? ואם אין מערכת כזו — איך אתה עוקב אחרי מלאי וסחורה?</span></label><textarea id="q6" name="6. מערכות וסנכרון" required></textarea></li>
+    <li><label for="q7">איך אתה מחליט כמה סחורה להזמין?</label><textarea id="q7" name="7. החלטת הזמנת סחורה" required></textarea></li>
+    <li><label for="q8">בקצרה — מה קורה מרגע שהזמנה נכנסת ועד שהיא אצל הלקוח?</label><textarea id="q8" name="8. מסע ההזמנה" required></textarea></li>
+    <li><label for="q9">מי עושה את המשלוחים — ותוך כמה זמן ההזמנה אצל הלקוח? <span class="hint">חברת משלוחים חיצונית, שליח משלך, דואר, איסוף עצמי.</span></label><textarea id="q9" name="9. משלוחים וזמן אספקה" required></textarea></li>
+    <li><label for="q10">איך אתה בודק כמה אתה מרוויח על מוצר?</label><textarea id="q10" name="10. בדיקת רווחיות מוצר" required></textarea></li>
+    <li><label for="q11">כמה מהלקוחות חוזרים לקנות שוב, <span class="hint">ואיך אתה יודע?</span></label><textarea id="q11" name="11. לקוחות חוזרים" required></textarea></li>
+    <li><label for="q12">מה קורה בעסק רק אם אתה עושה אותו?</label><textarea id="q12" name="12. תלוי רק בך" required></textarea></li>
+    <li><label for="q13">מה הדבר שאתה יודע שצריך לעשות כבר חצי שנה — ולא עשית?</label><textarea id="q13" name="13. מה שדחית חצי שנה" required></textarea></li>
+  </ol>
+
+  <label class="consent">
+    <input type="checkbox" name="הסכמה" required>
+    <span>קראתי ואני מאשר/ת שמירת הפרטים לצורך האבחון ויצירת קשר בעקבותיו. <!-- טקסט משפטי/תקנון — נגיע אליו בהמשך --></span>
+  </label>
+
+  <button type="submit" class="submit">שליחה</button>
+</form>
+
+</div><!-- /formwrap -->
+
+<div id="thanks">
+  <p class="brand">Inside the Brand</p>
+  <h2>תודה — קיבלתי.</h2>
+  <p>המילוי שלך אצלי. אני עוברת עליו ואחזור אליך עם <b>צילום מצב ראשוני</b> — קריאה של העסק ואיפה כדאי לעצור רגע ולבחון את הדברים יותר לעומק. נשתמע בימים הקרובים.</p>
+  <p>— גליה</p>
+</div>
+
+<footer>
+  Inside the Brand · <span class="t">Where Brand, Operations &amp; Revenue Connect</span>
+</footer>
+
+</div>
+
+<script>
+  // ── חיבור ה-backend ──
+  // מחובר לתיבה (Apps Script בחשבון של גליה) — שלב 2 הושלם 22.07.2026:
+  const ACTION_URL = "https://script.google.com/macros/s/AKfycbzuYNkZ0ssZlXxe4U9F-bZvHSw4SiOiaT1eHTKO44ofqtpIrGNe5B8L0fFg6Gr_-5k46g/exec";
+
+  const form = document.getElementById('diag');
+  const btn  = form.querySelector('.submit');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(!ACTION_URL){ alert('הטופס עדיין לא חובר לתיבה (שלב 2). זו גרסת תצוגה.'); return; }
+    btn.disabled = true; btn.textContent = 'שולח…';
+    try{
+      await fetch(ACTION_URL, { method:'POST', mode:'no-cors', body: new FormData(form) });
+      document.getElementById('formwrap').style.display = 'none';
+      document.getElementById('thanks').style.display = 'block';
+      window.scrollTo(0,0);
+    }catch(err){
+      btn.disabled = false; btn.textContent = 'שליחה';
+      alert('משהו השתבש בשליחה. אפשר לנסות שוב, או לפנות לגליה ישירות.');
+    }
+  });
+</script>
