@@ -3,8 +3,12 @@
   זו הגרסה האינטראקטיבית לאינטרנט (לא להדפסה — לזה יש את "אבחון עסקי — שאלון קצר.html").
   ה-backend מחובר: ACTION_URL בתחתית הקובץ מצביע על תיבת ה-Apps Script (שלב 2 הושלם 22.07.2026).
 -->
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="שאלון אבחון עסקי קצר של Inside the Brand. כחמש־עשרה שאלות, ובחזרה תמונת מצב ראשונית של העסק.">
 <title>אבחון עסקי — Inside the Brand</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +17,10 @@
 <style>
   :root{
     --paper:#F5F0E8;--paper-2:#FBF8F3;--ink:#1E1B18;--ink-soft:#5A534C;
-    --ink-faint:#918878;--terracotta:#C0563B;--rule:#DED5C7;
+    /* ink-faint was #918878 (3.09:1) and terracotta text was #C0563B (3.99:1) -
+       both under the 4.5:1 that תקן 5568 / WCAG AA requires for body text.
+       --terracotta stays the brand colour and is used for fills, never small text. */
+    --ink-faint:#6E6659;--terracotta:#C0563B;--terracotta-text:#A34932;--rule:#DED5C7;
   }
   *{box-sizing:border-box}
   html{background:var(--paper)}
@@ -26,13 +33,13 @@
   .wrap{max-width:760px;margin:0 auto;padding:56px 24px 96px}
 
   header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:36px}
-  .brand{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);font-weight:500;direction:ltr;text-align:right;margin:0 0 14px}
+  .brand{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta-text);font-weight:500;direction:ltr;text-align:right;margin:0 0 14px}
   h1{font-size:32px;line-height:1.25;font-weight:700;margin:0 0 12px;letter-spacing:-.01em}
   .sub{color:var(--ink-soft);margin:0;max-width:56ch;font-weight:300}
 
   .cover{margin-bottom:8px}
   .cov-block{margin:0 0 32px}
-  .lbl{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--terracotta);margin:0 0 12px;border-bottom:1px solid var(--rule);padding-bottom:8px}
+  .lbl{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--terracotta-text);margin:0 0 12px;border-bottom:1px solid var(--rule);padding-bottom:8px}
   .lead{font-size:19px;font-weight:500;line-height:1.55;margin:0;max-width:64ch}
   .lead b{font-weight:700}
   ul.gains{list-style:none;margin:0;padding:0}
@@ -61,7 +68,7 @@
   @media(max-width:520px){.cgrid{grid-template-columns:1fr}}
   .field{margin:0}
   .field label{display:block;font-weight:500;margin:0 0 7px;font-size:16px}
-  .req{color:var(--terracotta)}
+  .req{color:var(--terracotta-text)}
   input[type=text],input[type=email],input[type=tel],textarea{
     width:100%;font-family:inherit;font-size:16px;color:var(--ink);
     background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;
@@ -92,16 +99,59 @@
   #thanks{display:none;padding:24px 0}
   #thanks h2{font-size:26px;margin:0 0 12px}
   #thanks p{color:var(--ink-soft);max-width:60ch;margin:0 0 8px;font-weight:300}
+  #thanks .ty-contact{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);font-size:14px}
 
   footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-faint);font-weight:300}
-  footer .t{color:var(--terracotta);letter-spacing:.04em}
+  footer .t{color:var(--terracotta-text);letter-spacing:.04em}
 
   @media (prefers-color-scheme:dark){
     :root{--paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#7A7166;--rule:#332E28;--terracotta:#D9714F}
   }
   :root[data-theme="dark"]{--paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#7A7166;--rule:#332E28;--terracotta:#D9714F}
   :root[data-theme="light"]{--paper:#F5F0E8;--paper-2:#FBF8F3;--ink:#1E1B18;--ink-soft:#5A534C;--ink-faint:#918878;--rule:#DED5C7;--terracotta:#C0563B}
+
+  /* keyboard users have to be able to see where they are */
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
+    outline:3px solid var(--terracotta-text);outline-offset:2px;
+  }
+  .skip{
+    position:absolute;right:-9999px;top:0;background:var(--ink);color:#fff;
+    padding:10px 18px;z-index:100;text-decoration:none;border-radius:0 0 3px 3px;
+  }
+  .skip:focus{right:12px}
+
+  .legal{margin:0 0 26px;font-size:14.5px;color:var(--ink-soft);font-weight:300}
+  .legal a{color:var(--terracotta-text)}
+  .consent + .consent{margin-top:-18px}
+  .consent .opt{font-size:13.5px;color:var(--ink-faint);display:block;margin-top:3px}
+  footer .legal-links{margin-top:10px;display:block}
+  footer .legal-links a{color:var(--ink-soft);text-decoration:underline;margin-left:14px}
+  footer .rights{margin-top:8px;display:block;color:var(--ink-faint)}
+
+  /* the branch selector. Four questions swap on this answer. */
+  fieldset.track{
+    border:1px solid var(--rule);border-radius:3px;background:var(--paper-2);
+    margin:26px 0 0;padding:18px 20px 14px;
+  }
+  fieldset.track legend{
+    padding:0 8px;font-weight:700;font-size:16px;color:var(--ink);
+  }
+  fieldset.track .track-why{
+    margin:0 0 12px;font-size:14.5px;color:var(--ink-soft);font-weight:300;
+  }
+  fieldset.track label{
+    display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;
+    font-weight:300;color:var(--ink-soft);cursor:pointer;font-size:15.5px;
+  }
+  fieldset.track label b{font-weight:500;color:var(--ink)}
+  fieldset.track input{margin-top:5px;flex:0 0 auto;width:16px;height:16px;accent-color:var(--terracotta)}
+  ol.qform>li[data-track]{display:none}
+  ol.qform>li[data-track].on{display:block}
 </style>
+</head>
+<body>
+
+<a class="skip" href="#diag">דילוג לשאלון</a>
 
 <div class="wrap">
 
@@ -142,7 +192,7 @@
 
   <div class="cov-block">
     <p class="lbl">לפני שנתחיל</p>
-    <p class="bridge">13 שאלות, בערך עשר דקות. אין תשובות נכונות — רק כנות. המילוי עצמו כבר מתחיל להראות איפה העסק תקוע — וזו נקודת הפתיחה של השיחה בינינו.</p>
+    <p class="bridge">כחמש־עשרה שאלות, בערך עשר דקות. אין תשובות נכונות — רק כנות. המילוי עצמו כבר מתחיל להראות איפה העסק תקוע — וזו נקודת הפתיחה של השיחה בינינו.</p>
   </div>
 </section>
 
@@ -174,26 +224,59 @@
     <p class="q-note">* השאלון מנוסח בלשון זכר מטעמי קיצור — ופונה כמובן לנשים וגברים כאחד.</p>
   </div>
 
+  <fieldset class="track">
+    <legend>לפני שמתחילים — מה העסק שלך מוכר בעיקר?</legend>
+    <p class="track-why">ארבע שאלות בהמשך משתנות לפי התשובה, כדי שלא תענה על שאלות
+      שלא שייכות לעסק שלך.</p>
+    <label><input type="radio" name="0. מה העסק מוכר" value="מוצרים" required>
+      <span><b>מוצרים.</b> סחורה, מלאי, משהו שנשלח או נאסף.</span></label>
+    <label><input type="radio" name="0. מה העסק מוכר" value="שירות או זמן">
+      <span><b>שירות, ידע או זמן.</b> פרויקטים, ייעוץ, עיצוב, טיפולים, שעות.</span></label>
+    <label><input type="radio" name="0. מה העסק מוכר" value="שניהם">
+      <span><b>שניהם.</b> יש גם סחורה וגם עבודה שנמכרת לפי זמן.</span></label>
+  </fieldset>
+
   <ol class="qform">
     <li><label for="q1">במשפט אחד — למה העסק לא צומח כמו שאתה רוצה?</label><textarea id="q1" name="1. למה העסק לא צומח" required></textarea></li>
     <li><label for="q2">מה אתה מוכר, ולמי?</label><textarea id="q2" name="2. מה מוכר ולמי" required></textarea></li>
     <li><label for="q3">למה לקוח בוחר בך ולא במישהו זול יותר?</label><textarea id="q3" name="3. למה בוחרים בך" required></textarea></li>
     <li><label for="q4">מאיפה מגיעים אליך לקוחות היום?</label><textarea id="q4" name="4. מאיפה מגיעים לקוחות" required></textarea></li>
     <li><label for="q5">איזה ערוץ הכי חזק — ואיך אתה יודע? <span class="hint">אתר, חנות פיזית, וולט, אינסטגרם, B2B — כל מה שמכניס כסף נחשב.</span></label><textarea id="q5" name="5. הערוץ הכי חזק" required></textarea></li>
-    <li><label for="q6">אילו מערכות מריצות את העסק כיום — והאם הן מדברות זו עם זו? <span class="hint">אתר, קופה, מלאי, CRM/ERP, הנהלת חשבונות, מועדון. מסונכרנות, או כל אחת עובדת לבד? ואם אין מערכת כזו — איך אתה עוקב אחרי מלאי וסחורה?</span></label><textarea id="q6" name="6. מערכות וסנכרון" required></textarea></li>
-    <li><label for="q7">איך אתה מחליט כמה סחורה להזמין?</label><textarea id="q7" name="7. החלטת הזמנת סחורה" required></textarea></li>
+    <li><label for="q15">יש לך קבוצה, קהילה או רשימת תפוצה שאתה יכול לפנות אליה היום — וכמה אנשים יש בה? <span class="hint">קבוצת וואטסאפ, ערוץ, רשימת דיוור, קבוצת פייסבוק, או רשימת לקוחות בקובץ. כל מקום שאפשר לפנות ממנו ישירות בלי לשלם על חשיפה. אם אין, פשוט תכתוב "אין".</span></label><textarea id="q15" name="15. קהילה או רשימת תפוצה" required></textarea></li>
+    <li data-track="מוצרים"><label for="q6">אילו מערכות מריצות את העסק כיום — והאם הן מדברות זו עם זו? <span class="hint">אתר, קופה, מלאי, CRM/ERP, הנהלת חשבונות, מועדון. מסונכרנות, או כל אחת עובדת לבד? ואם אין מערכת כזו — איך אתה עוקב אחרי מלאי וסחורה?</span></label><textarea id="q6" name="6. מערכות וסנכרון" required></textarea></li>
+    <li data-track="שירות או זמן"><label for="q6s">אילו מערכות מריצות את העסק כיום — והאם הן מדברות זו עם זו? <span class="hint">אתר, CRM, ניהול פרויקטים, הצעות מחיר, חשבוניות, יומן. מסונכרנות, או כל אחת עובדת לבד? ואם אין מערכת — איפה בפועל שמור מי הלקוחות ומה מצב כל עבודה?</span></label><textarea id="q6s" name="6ש. מערכות וסנכרון (שירות)" required></textarea></li>
+    <li data-track="מוצרים"><label for="q7">איך אתה מחליט כמה סחורה להזמין?</label><textarea id="q7" name="7. החלטת הזמנת סחורה" required></textarea></li>
+    <li data-track="שירות או זמן"><label for="q7s">איך אתה מחליט כמה עבודה לקחת — ומה קורה כשמגיעה עוד אחת ואתה כבר מלא? <span class="hint">זו אותה שאלה של "כמה מלאי", רק שהמלאי שלך הוא זמן.</span></label><textarea id="q7s" name="7ש. החלטת קיבולת" required></textarea></li>
     <li><label for="q8">בקצרה — מה קורה מרגע שהזמנה נכנסת ועד שהיא אצל הלקוח?</label><textarea id="q8" name="8. מסע ההזמנה" required></textarea></li>
-    <li><label for="q9">מי עושה את המשלוחים — ותוך כמה זמן ההזמנה אצל הלקוח? <span class="hint">חברת משלוחים חיצונית, שליח משלך, דואר, איסוף עצמי.</span></label><textarea id="q9" name="9. משלוחים וזמן אספקה" required></textarea></li>
-    <li><label for="q10">איך אתה בודק כמה אתה מרוויח על מוצר?</label><textarea id="q10" name="10. בדיקת רווחיות מוצר" required></textarea></li>
-    <li><label for="q11">כמה מהלקוחות חוזרים לקנות שוב, <span class="hint">ואיך אתה יודע?</span></label><textarea id="q11" name="11. לקוחות חוזרים" required></textarea></li>
+    <li data-track="מוצרים"><label for="q9">מי עושה את המשלוחים — ותוך כמה זמן ההזמנה אצל הלקוח? <span class="hint">חברת משלוחים חיצונית, שליח משלך, דואר, איסוף עצמי.</span></label><textarea id="q9" name="9. משלוחים וזמן אספקה" required></textarea></li>
+    <li data-track="שירות או זמן"><label for="q9s">כמה זמן עובר מרגע שסגרתם ועד שהעבודה אצל הלקוח — ומה מעכב הכי הרבה? <span class="hint">אישורים, חומרים מהלקוח, ספק חיצוני, או פשוט התור שלך.</span></label><textarea id="q9s" name="9ש. זמן אספקה ועיכובים" required></textarea></li>
+    <li data-track="מוצרים"><label for="q10">איך אתה בודק כמה אתה מרוויח על מוצר?</label><textarea id="q10" name="10. בדיקת רווחיות מוצר" required></textarea></li>
+    <li data-track="שירות או זמן"><label for="q10s">איך אתה בודק כמה אתה מרוויח על פרויקט? <span class="hint">ואם אתה לא בודק — זו תשובה לגיטימית לגמרי, תכתוב אותה.</span></label><textarea id="q10s" name="10ש. רווחיות לפי פרויקט" required></textarea></li>
+    <li><label for="q11">כמה מהלקוחות חוזרים — וכמה מהם משלמים לך באופן קבוע? <span class="hint">שתי שאלות שונות: לקוח שחוזר כל פעם לעבודה חדשה, מול לקוח שמשלם סכום קבוע כל חודש. ואיך אתה יודע?</span></label><textarea id="q11" name="11. לקוחות חוזרים" required></textarea></li>
     <li><label for="q12">מה קורה בעסק רק אם אתה עושה אותו?</label><textarea id="q12" name="12. תלוי רק בך" required></textarea></li>
+    <li><label for="q14">יש לך הכנסה שנכנסת בלי שאתה מוכר את הזמן שלך? <span class="hint">מוצר, קורס, ספר, עמלה, זכיינות, השכרה. גם אם היא קטנה, וגם אם היא מנוהלת בצד ולא ממש חלק מהעסק.</span></label><textarea id="q14" name="14. הכנסה שלא מהזמן שלך" required></textarea></li>
     <li><label for="q13">מה הדבר שאתה יודע שצריך לעשות כבר חצי שנה — ולא עשית?</label><textarea id="q13" name="13. מה שדחית חצי שנה" required></textarea></li>
   </ol>
 
+  <p class="legal">שדות המסומנים ב־<span class="req" aria-hidden="true">*</span> הם שדות חובה.
+    הפרטים שלך נשמרים אצלי בלבד ומשמשים להפקת תמונת המצב ולחזרה אליך.
+    הפירוט המלא ב<a href="מדיניות-פרטיות.html">מדיניות הפרטיות</a>.</p>
+
   <label class="consent">
     <input type="checkbox" name="הסכמה" required>
-    <span>קראתי ואני מאשר/ת שמירת הפרטים לצורך האבחון ויצירת קשר בעקבותיו. <!-- טקסט משפטי/תקנון — נגיע אליו בהמשך --></span>
+    <span>קראתי את <a href="מדיניות-פרטיות.html">מדיניות הפרטיות</a> ואני מאשר/ת שמירת
+      הפרטים שמסרתי לצורך הפקת תמונת המצב ויצירת קשר בעקבותיה.
+      <span class="req" aria-hidden="true">*</span></span>
   </label>
+
+  <label class="consent">
+    <input type="checkbox" name="הסכמה לדיוור">
+    <span>אשמח לקבל גם תכנים ועדכונים במייל מ־Inside the Brand.
+      <span class="opt">לא חובה, ואפשר להסיר את עצמך מכל הודעה. סימון או אי־סימון של
+        התיבה הזו לא משפיע על קבלת תמונת המצב.</span></span>
+  </label>
+
+  <input type="hidden" name="גרסת מדיניות" value="09/09/2026">
 
   <button type="submit" class="submit">שליחה</button>
 </form>
@@ -205,10 +288,17 @@
   <h2>תודה — קיבלתי.</h2>
   <p>המילוי שלך אצלי. אני עוברת עליו ואחזור עם <b>תמונת מצב ראשונית</b> — קריאה של העסק ואיפה כדאי לעצור רגע ולבחון את הדברים יותר לעומק. נשתמע בימים הקרובים.</p>
   <p>— גליה</p>
+  <p class="ty-contact">אם משהו דחוף או שלא קיבלת ממני תשובה, אפשר לכתוב לי ישירות:
+    <a href="mailto:galia@inside-the-brand.co.il" dir="ltr">galia@inside-the-brand.co.il</a></p>
 </div>
 
 <footer>
   Inside the Brand · <span class="t">Where Brand, Operations &amp; Revenue Connect</span>
+  <span class="legal-links">
+    <a href="מדיניות-פרטיות.html">מדיניות פרטיות</a>
+    <a href="הצהרת-נגישות.html">הצהרת נגישות</a>
+  </span>
+  <span class="rights"><span dir="ltr">&copy; 2026 Inside the Brand</span> · גליה ארליך. כל הזכויות שמורות.</span>
 </footer>
 
 </div>
@@ -217,6 +307,28 @@
   // ── חיבור ה-backend ──
   // מחובר לתיבה (Apps Script בחשבון של גליה) — שלב 2 הושלם 22.07.2026:
   const ACTION_URL = "https://script.google.com/macros/s/AKfycbzuYNkZ0ssZlXxe4U9F-bZvHSw4SiOiaT1eHTKO44ofqtpIrGNe5B8L0fFg6Gr_-5k46g/exec";
+
+  // ── הסתעפות השאלון ──
+  // שאלות מוסתרות חייבות להיות disabled, אחרת required חוסם שליחה על שדה
+  // שאף אחד לא רואה, והדפדפן לא מסביר למה.
+  (function(){
+    const branch = document.querySelectorAll('input[name="0. מה העסק מוכר"]');
+    const items  = document.querySelectorAll('ol.qform > li[data-track]');
+    function apply(){
+      let chosen = null;
+      branch.forEach(function(r){ if(r.checked) chosen = r.value; });
+      items.forEach(function(li){
+        const track = li.getAttribute('data-track');
+        const show  = chosen !== null && (chosen === 'שניהם' || chosen === track);
+        li.classList.toggle('on', show);
+        li.querySelectorAll('textarea,input,select').forEach(function(fld){
+          fld.disabled = !show;
+        });
+      });
+    }
+    branch.forEach(function(r){ r.addEventListener('change', apply); });
+    apply();
+  })();
 
   const form = document.getElementById('diag');
   const btn  = form.querySelector('.submit');
@@ -231,7 +343,10 @@
       window.scrollTo(0,0);
     }catch(err){
       btn.disabled = false; btn.textContent = 'שליחה';
-      alert('משהו השתבש בשליחה. אפשר לנסות שוב, או לפנות לגליה ישירות.');
+      alert('משהו השתבש בשליחה. אפשר לנסות שוב, או לשלוח לי את התשובות ישירות למייל: galia@inside-the-brand.co.il');
     }
   });
 </script>
+
+</body>
+</html>

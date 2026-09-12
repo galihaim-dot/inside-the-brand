@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הצהרת נגישות — Inside the Brand</title>
+<meta name="description" content="הצהרת הנגישות של Inside the Brand: מה הונגש בשאלון האבחון, לפי איזה תקן, ואיך לדווח על תקלה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F0E8;--paper-2:#FBF8F3;--ink:#1E1B18;--ink-soft:#5A534C;
+    --ink-faint:#6E6659;--terracotta:#C0563B;--terracotta-text:#A34932;--rule:#DED5C7;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--paper)}
+  body{
+    margin:0;direction:rtl;text-align:right;
+    font-family:"Heebo",-apple-system,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.75;font-weight:400;color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:46px 22px 64px}
+  .brand{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta-text);font-weight:500;direction:ltr;text-align:right;margin:0 0 14px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:26px;margin-bottom:34px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;font-weight:700;letter-spacing:-.01em}
+  .updated{margin:0;color:var(--ink-faint);font-size:14.5px;font-weight:300}
+  h2{font-size:20px;margin:36px 0 10px;font-weight:700;line-height:1.3}
+  p,li{color:var(--ink-soft);font-weight:300}
+  p{margin:0 0 14px;max-width:64ch}
+  ul{margin:0 0 14px;padding-right:20px}
+  li{margin-bottom:7px}
+  strong{color:var(--ink);font-weight:500}
+  a{color:var(--terracotta-text)}
+  a:focus-visible{outline:3px solid var(--terracotta-text);outline-offset:2px}
+  .fill{background:#F3E4DE;padding:1px 7px;border-radius:2px;color:var(--terracotta-text);font-weight:500}
+  .box{background:var(--paper-2);border:1px solid var(--rule);border-radius:3px;padding:18px 20px;margin:22px 0}
+  .box p:last-child{margin-bottom:0}
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-faint);font-weight:300}
+  footer a{color:var(--ink-soft);text-decoration:underline;margin-left:14px}
+  footer .rights{display:block;margin-top:8px}
+  @media (max-width:600px){ .wrap{padding:30px 16px 48px} h1{font-size:27px} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <p class="brand">Inside the Brand</p>
+  <h1>הצהרת נגישות</h1>
+  <p class="updated">עודכן לאחרונה: 9 בספטמבר 2026</p>
+</header>
+
+<p>אני רואה בנגישות חלק מהעבודה עצמה. עסק שמישהו לא מצליח להשתמש בו הוא עסק
+שמפסיד אותו, וזה נכון גם לאתר שלי. הדף הזה מתאר מה נעשה בפועל, ואיך לדווח לי
+כשמשהו לא עובד.</p>
+
+<h2>לפי איזה תקן</h2>
+<p>השאלון והדפים הנלווים נבנו כדי לעמוד ב<strong>תקן ישראלי 5568</strong> ברמה AA,
+המבוסס על הנחיות <strong>WCAG 2.0</strong> של ארגון W3C, בהתאם לתקנות שוויון זכויות
+לאנשים עם מוגבלות (התאמות נגישות לשירות).</p>
+
+<h2>מה הונגש בפועל</h2>
+<ul>
+  <li><strong>ניווט מקלדת מלא.</strong> אפשר להגיע לכל שדה, קישור וכפתור ב־Tab,
+    ולשלוח את הטופס בלי עכבר.</li>
+  <li><strong>סימון מיקוד גלוי.</strong> לכל רכיב פעיל יש מסגרת ברורה כשהוא במיקוד.</li>
+  <li><strong>קישור דילוג</strong> לתחילת השאלון, שמופיע בלחיצת Tab ראשונה.</li>
+  <li><strong>תווית לכל שדה.</strong> כל שאלה קשורה לשדה שלה, כך שקורא מסך מקריא
+    את השאלה המלאה ולא רק "תיבת טקסט".</li>
+  <li><strong>ניגודיות צבעים.</strong> הצבעים נבדקו וחושבו. שני גוונים שלא עמדו
+    ביחס הנדרש של 4.5:1 הוחלפו בגוונים כהים יותר מאותה משפחה.</li>
+  <li><strong>מבנה כותרות היררכי</strong> וסדר קריאה הגיוני.</li>
+  <li><strong>שפה ומגמה מוגדרות</strong> בקוד העמוד (עברית, ימין לשמאל), כדי
+    שקוראי מסך יבטאו את הטקסט נכון.</li>
+  <li><strong>טקסט מתרחב.</strong> אפשר להגדיל את הטקסט בדפדפן בלי שהתוכן ייחתך.</li>
+  <li><strong>ללא הבהובים</strong> וללא אלמנטים נעים.</li>
+</ul>
+
+<h2>מה עדיין לא מושלם</h2>
+<p>ההצהרה הזו נכתבת בכנות, ולא כדי לסמן וי.</p>
+<ul>
+  <li>האתר לא נבדק עדיין על ידי מומחה נגישות מוסמך ולא בכל קוראי המסך הקיימים.
+    הבדיקות שנעשו הן בדיקות פנימיות.</li>
+  <li>הדפים מוגשים דרך שירות אחסון חיצוני, ולתקלות שמקורן בשירות עצמו אין לי
+    שליטה מלאה.</li>
+</ul>
+<p>אם נתקלת במשהו שלא עובד, זה מידע שאני רוצה לקבל. אני מטפלת בפניות כאלה
+ומתקנת.</p>
+
+<h2>רכזת הנגישות</h2>
+<div class="box">
+  <p><strong>גליה ארליך</strong>, Inside the Brand<br>
+    אימייל: <a href="mailto:galia@inside-the-brand.co.il" dir="ltr">galia@inside-the-brand.co.il</a><br>
+    טלפון: <a href="tel:+972547233460" dir="ltr">054-723-3460</a></p>
+  <p>אפשר לפנות בכל נושא של נגישות: תקלה, בקשה להתאמה, או קושי בשימוש בטופס.
+    אחזור בתוך זמן סביר, ובכל מקרה לא יאוחר מ־<strong>שבעה ימי עסקים</strong>.</p>
+</div>
+
+<h2>איך מדווחים על תקלה</h2>
+<p>כדי שאוכל לתקן מהר, כדאי לכלול בפנייה:</p>
+<ul>
+  <li>באיזה דף זה קרה.</li>
+  <li>מה ניסית לעשות, ומה קרה במקום.</li>
+  <li>באיזה דפדפן ובאיזו טכנולוגיה מסייעת השתמשת, אם רלוונטי.</li>
+</ul>
+
+<h2>מועד הבדיקה</h2>
+<p>הנגישות נבדקה ותוקנה ב־<strong>9 בספטמבר 2026</strong>. היא נבדקת מחדש אחרי כל
+שינוי משמעותי בעיצוב או בתוכן.</p>
+
+<footer>
+  <a href="אבחון עסקי — שאלון (טופס חי).html">חזרה לשאלון</a>
+  <a href="מדיניות-פרטיות.html">מדיניות פרטיות</a>
+  <span class="rights"><span dir="ltr">&copy; 2026 Inside the Brand</span> · גליה ארליך. כל הזכויות שמורות.</span>
+</footer>
+
+</div>
+
+</body>
+</html>
