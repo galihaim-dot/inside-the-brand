@@ -10,17 +10,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="שאלון אבחון עסקי קצר של Inside the Brand. כחמש־עשרה שאלות, ובחזרה תמונת מצב ראשונית של העסק.">
 <title>אבחון עסקי — Inside the Brand</title>
+<link rel="icon" href="assets/itb-favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
+  /* ────────────────────────────────────────────────────────────
+     פלטת Inside the Brand — אושרה 16.9.2026.
+     המקור: מותג/קוד/tokens.css. לא להמציא כאן גוונים.
+
+     שלושה כללים שאסור לשבור:
+     1. --terracotta (#C0563B) נותן 4.0 מול נייר — מתחת לסף 4.5 של
+        תקן 5568 / WCAG AA. הוא למילויים דקורטיביים בלבד.
+        כל מילוי שנושא טקסט משתמש ב---terracotta-fill (5.8).
+        כל טקסט בטרהקוטה משתמש ב---terracotta-text (7.8).
+     2. #8A827A נותן 3.3 ואינו צבע טקסט. ל-fine print: --ink-faint (4.9).
+     3. אקסנט אחד בעמוד.
+     ──────────────────────────────────────────────────────────── */
   :root{
-    --paper:#F5F0E8;--paper-2:#FBF8F3;--ink:#1E1B18;--ink-soft:#5A534C;
-    /* ink-faint was #918878 (3.09:1) and terracotta text was #C0563B (3.99:1) -
-       both under the 4.5:1 that תקן 5568 / WCAG AA requires for body text.
-       --terracotta stays the brand colour and is used for fills, never small text. */
-    --ink-faint:#6E6659;--terracotta:#C0563B;--terracotta-text:#A34932;--rule:#DED5C7;
+    --paper:#F5F0E8;        /* paper-300 */
+    --paper-2:#FBF8F2;      /* paper-200 */
+    --ink:#1E1B18;          /* ink-900 · 15.1 */
+    --ink-soft:#57504A;     /* ink-600 · 7.0 */
+    --ink-faint:#6F6760;    /* ink-550 · 4.9 — הכי בהיר שעדיין קריא */
+    --terracotta:#C0563B;   /* terra-500 · המותג. מילויים ללא טקסט */
+    --terracotta-fill:#9E4025; /* terra-600 · מילוי שנושא טקסט · 5.8 ✓ */
+    --terracotta-text:#7E3320; /* terra-700 · טקסט ו-focus · 7.8 ✓ */
+    --olive:#737C46;        /* olive-500 · המשפחה המשנית */
+    --olive-fill:#5A6138;   /* olive-600 · 5.8 ✓ */
+    --olive-text:#3F452A;   /* olive-700 · 8.8 ✓ */
+    --rule:#DED3C3;         /* paper-500 */
+    --font-display:"Frank Ruhl Libre",Georgia,serif;
   }
   *{box-sizing:border-box}
   html{background:var(--paper)}
@@ -33,8 +56,8 @@
   .wrap{max-width:760px;margin:0 auto;padding:56px 24px 96px}
 
   header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:36px}
-  .brand{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta-text);font-weight:500;direction:ltr;text-align:right;margin:0 0 14px}
-  h1{font-size:32px;line-height:1.25;font-weight:700;margin:0 0 12px;letter-spacing:-.01em}
+  .logo{margin:0 0 22px}
+  h1{font-family:var(--font-display);font-size:36px;line-height:1.2;font-weight:700;margin:0 0 12px;letter-spacing:0}
   .sub{color:var(--ink-soft);margin:0;max-width:56ch;font-weight:300}
 
   .cover{margin-bottom:8px}
@@ -50,7 +73,7 @@
   .bridge{margin:0;color:var(--ink-soft);font-weight:300;max-width:62ch}
 
   .who{display:flex;gap:18px;align-items:center}
-  .who .photo{flex:0 0 auto;width:68px;height:68px;border-radius:50%;overflow:hidden;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:23px}
+  .who .photo{flex:0 0 auto;width:68px;height:68px;border-radius:50%;overflow:hidden;background:var(--terracotta-fill);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:23px}
   .who .photo img{width:100%;height:100%;object-fit:cover;display:block}
   .who .nm{font-weight:700;margin:0 0 5px;font-size:17px}
   .who .bio{margin:0;color:var(--ink-soft);font-weight:400;max-width:58ch;font-size:16px;line-height:1.6}
@@ -58,7 +81,7 @@
 
   /* ── טופס ── */
   .q-head{border-top:2px solid var(--ink);padding-top:34px;margin-bottom:30px}
-  .q-head h2{font-size:24px;font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
+  .q-head h2{font-family:var(--font-display);font-size:27px;font-weight:700;margin:0 0 8px;letter-spacing:0}
   .q-sub{margin:0;color:var(--ink-soft);font-weight:300;font-size:15.5px;max-width:64ch}
   .q-note{margin:8px 0 0;color:var(--ink-faint);font-weight:300;font-size:13.5px}
 
@@ -83,7 +106,7 @@
     counter-increment:q;content:counter(q);
     position:absolute;right:0;top:0;width:30px;height:30px;
     display:flex;align-items:center;justify-content:center;
-    font-size:13px;font-weight:700;color:#fff;background:var(--terracotta);
+    font-size:13px;font-weight:700;color:#fff;background:var(--terracotta-fill);
     border-radius:50%;direction:ltr;
   }
   ol.qform>li label{display:block;font-weight:500;margin:0 0 9px;line-height:1.5}
@@ -92,23 +115,49 @@
   .consent{display:flex;gap:11px;align-items:flex-start;margin:6px 0 30px;font-size:15px;color:var(--ink-soft);font-weight:300}
   .consent input{margin-top:5px;flex:0 0 auto;width:16px;height:16px;accent-color:var(--terracotta)}
 
-  .submit{background:var(--terracotta);color:#fff;border:none;border-radius:3px;padding:15px 34px;font-family:inherit;font-size:17px;font-weight:700;cursor:pointer;transition:filter .15s}
-  .submit:hover{filter:brightness(1.06)}
+  .submit{background:var(--terracotta-fill);color:#fff;border:none;border-radius:3px;padding:15px 34px;font-family:inherit;font-size:17px;font-weight:700;cursor:pointer;transition:filter .15s}
+  .submit:hover{background:var(--terracotta-text)}
   .submit:disabled{opacity:.6;cursor:default}
 
   #thanks{display:none;padding:24px 0}
-  #thanks h2{font-size:26px;margin:0 0 12px}
+  #thanks h2{font-family:var(--font-display);font-size:29px;font-weight:700;margin:0 0 12px}
   #thanks p{color:var(--ink-soft);max-width:60ch;margin:0 0 8px;font-weight:300}
   #thanks .ty-contact{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);font-size:14px}
 
   footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-faint);font-weight:300}
   footer .t{color:var(--terracotta-text);letter-spacing:.04em}
 
+  /* מצב כהה — על רקע כהה טרהקוטה מתבהרת, ואז היא כן עוברת את הסף,
+     ולכן שלושת התפקידים מתלכדים לגוון אחד. */
   @media (prefers-color-scheme:dark){
-    :root{--paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#7A7166;--rule:#332E28;--terracotta:#D9714F}
+    :root:not([data-theme="light"]){
+      --paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#8D8377;
+      --rule:#332E28;--terracotta:#D9714F;--terracotta-fill:#C0563B;--terracotta-text:#E08E70;
+      --olive:#A8B181;--olive-fill:#737C46;--olive-text:#B9C195;
+    }
   }
-  :root[data-theme="dark"]{--paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#7A7166;--rule:#332E28;--terracotta:#D9714F}
-  :root[data-theme="light"]{--paper:#F5F0E8;--paper-2:#FBF8F3;--ink:#1E1B18;--ink-soft:#5A534C;--ink-faint:#918878;--rule:#DED5C7;--terracotta:#C0563B}
+  :root[data-theme="dark"]{
+    --paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#8D8377;
+    --rule:#332E28;--terracotta:#D9714F;--terracotta-fill:#C0563B;--terracotta-text:#E08E70;
+    --olive:#A8B181;--olive-fill:#737C46;--olive-text:#B9C195;
+  }
+  :root[data-theme="light"]{
+    --paper:#F5F0E8;--paper-2:#FBF8F2;--ink:#1E1B18;--ink-soft:#57504A;--ink-faint:#6F6760;
+    --rule:#DED3C3;--terracotta:#C0563B;--terracotta-fill:#9E4025;--terracotta-text:#7E3320;
+    --olive:#737C46;--olive-fill:#5A6138;--olive-text:#3F452A;
+  }
+
+  /* הלוגו מתחלף לפי מצב התצוגה */
+  .logo img{display:block;width:230px;max-width:72%;height:auto}
+  .logo .dark{display:none}
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .logo .light{display:none}
+    :root:not([data-theme="light"]) .logo .dark{display:block}
+  }
+  :root[data-theme="dark"] .logo .light{display:none}
+  :root[data-theme="dark"] .logo .dark{display:block}
+  :root[data-theme="light"] .logo .light{display:block}
+  :root[data-theme="light"] .logo .dark{display:none}
 
   /* keyboard users have to be able to see where they are */
   a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
@@ -156,7 +205,10 @@
 <div class="wrap">
 
 <header>
-  <p class="brand">Inside the Brand</p>
+  <p class="logo">
+    <img class="light" src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="230" height="67">
+    <img class="dark"  src="assets/itb-lockup-dark.svg"    alt="" aria-hidden="true" width="230" height="67">
+  </p>
   <h1>אבחון עסקי</h1>
   <p class="sub">מבט על כל העסק — איפה זה תקוע באמת, ומה לתקן קודם.</p>
 </header>
