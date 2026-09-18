@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/masthead.css">
 
 <style>
   /* ────────────────────────────────────────────────────────────
@@ -54,9 +55,9 @@
     line-height:1.7;font-size:17px;
   }
   .wrap{max-width:760px;margin:0 auto;padding:56px 24px 96px}
+  /* ראש העמוד והלוגו: assets/masthead.css, משותף לכל עמודי האתר */
 
   header{border-bottom:2px solid var(--ink);padding-bottom:28px;margin-bottom:36px}
-  .logo{margin:0 0 22px}
   h1{font-family:var(--font-display);font-size:36px;line-height:1.2;font-weight:700;margin:0 0 12px;letter-spacing:0}
   .sub{color:var(--ink-soft);margin:0;max-width:56ch;font-weight:300}
 
@@ -148,7 +149,6 @@
   }
 
   /* הלוגו מתחלף לפי מצב התצוגה */
-  .logo img{display:block;width:230px;max-width:72%;height:auto}
   .logo .dark{display:none}
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]) .logo .light{display:none}
@@ -202,13 +202,16 @@
 
 <a class="skip" href="#diag">דילוג לשאלון</a>
 
+<div class="masthead">
+  <p class="logo">
+    <img class="light" src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="150" height="44">
+    <img class="dark"  src="assets/itb-lockup-dark.svg"    alt="" aria-hidden="true" width="150" height="44">
+  </p>
+</div>
+
 <div class="wrap">
 
 <header>
-  <p class="logo">
-    <img class="light" src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="230" height="67">
-    <img class="dark"  src="assets/itb-lockup-dark.svg"    alt="" aria-hidden="true" width="230" height="67">
-  </p>
   <h1>אבחון עסקי</h1>
   <p class="sub">מבט על כל העסק — איפה זה תקוע באמת, ומה לתקן קודם.</p>
 </header>

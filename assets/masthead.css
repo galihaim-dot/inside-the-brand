@@ -1,0 +1,37 @@
+/* ────────────────────────────────────────────────────────────
+   ראש העמוד — אותו מיקום לוגו בכל עמודי האתר.
+
+   החלטה של גליה, 18.9.2026: הלוגו ממורכז בפס עליון משלו, קטן,
+   ועם מרווח לפני שהתוכן מתחיל. כל עמוד באתר טוען את הקובץ הזה
+   ומשתמש באותו markup. לא משנים מיקום או גודל בתוך עמוד בודד;
+   משנים כאן, וזה משתנה בכל העמודים.
+
+   <div class="masthead">
+     <p class="logo">
+       <img class="light" src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="150" height="44">
+     </p>
+   </div>
+   <div class="wrap"> …
+
+   למה במרכז: הלוקאפ נקרא משמאל לימין, ולכן הצמדה לקצה הימני של
+   עמוד בעברית מושכת אותו נגד הכיוון שלו.
+   מרווח סביב הלוגו: לפחות ברוחב הסמל מכל צד (README של הלוגו).
+   מינימום: 110px רוחב.
+
+   ההחלפה בין לוגו בהיר לכהה נשארת בכל עמוד בנפרד, כי רק עמוד שיש
+   לו מצב כהה רשאי להחליף. אחרת הלוגו עם הטקסט הבהיר נוחת על עמוד
+   בהיר ונעלם.
+   ──────────────────────────────────────────────────────────── */
+
+.masthead{border-bottom:1px solid var(--rule);padding:22px 24px}
+/* max-width:none — עמודים שמגבילים רוחב פסקה (למשל p{max-width:64ch})
+   היו מושכים את הלוגו ימינה מהמרכז במסך רחב */
+.masthead .logo{margin:0;max-width:none;text-align:center}
+.masthead .logo img{width:150px;height:auto;margin:0 auto;vertical-align:top}
+.masthead + .wrap{padding-top:64px}
+
+@media (max-width:520px){
+  .masthead{padding:16px 20px}
+  .masthead .logo img{width:130px}
+  .masthead + .wrap{padding-top:44px}
+}
