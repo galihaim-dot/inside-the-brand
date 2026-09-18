@@ -8,14 +8,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- מדיניות אבטחה (18.09.2026). הדפדפן מריץ ושולח רק מה שמותר כאן:
+     הסקריפט של הטופס, גופנים ועיצוב מהאתר עצמו, ושליחה רק לתיבת ה-Apps Script.
+     ⚠️ ה-sha256 הוא טביעת האצבע של הסקריפט שבתחתית העמוד. כל שינוי
+     בסקריפט, אפילו רווח, מחייב לחשב אותה מחדש ולעדכן כאן. אחרת הדפדפן
+     חוסם את הסקריפט והטופס מפסיק לשלוח. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-fInEGWqAdMpjha/NWXT6NwBov9huF+9EFEtoF075PVU='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="same-origin">
 <meta name="description" content="שאלון אבחון עסקי קצר של Inside the Brand. כחמש־עשרה שאלות, ובחזרה תמונת מצב ראשונית של העסק.">
 <title>אבחון עסקי — Inside the Brand</title>
 <link rel="icon" href="assets/itb-favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Frank+Ruhl+Libre:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/masthead.css">
 
 <style>
@@ -196,6 +201,9 @@
   fieldset.track input{margin-top:5px;flex:0 0 auto;width:16px;height:16px;accent-color:var(--terracotta)}
   ol.qform>li[data-track]{display:none}
   ol.qform>li[data-track].on{display:block}
+
+  /* שדה המלכודת לרובוטים: קיים בקוד, לא נראה ולא תופס מקום */
+  .hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 </style>
 </head>
 <body>
@@ -331,7 +339,15 @@
         התיבה הזו לא משפיע על קבלת תמונת המצב.</span></span>
   </label>
 
-  <input type="hidden" name="גרסת מדיניות" value="09/09/2026">
+  <input type="hidden" name="גרסת מדיניות" value="18/09/2026">
+
+  <!-- שדה מלכודת לרובוטים (18.09.2026). מוסתר מבני אדם ומקוראי מסך. רובוט שממלא
+       כל שדה ממלא גם אותו, והתיבה מעבירה שליחה כזו ללשונית "חשודות" בלי מייל.
+       השם ref_code חייב להיות זהה ל-HONEYPOT בקוד התיבה. -->
+  <div class="hp" aria-hidden="true">
+    <label for="ref_code">קוד הפניה</label>
+    <input type="text" id="ref_code" name="ref_code" tabindex="-1" autocomplete="off">
+  </div>
 
   <button type="submit" class="submit">שליחה</button>
 </form>
