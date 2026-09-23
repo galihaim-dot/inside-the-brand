@@ -21,6 +21,7 @@
 <link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/masthead.css">
 
 <style>
@@ -37,18 +38,20 @@
      3. אקסנט אחד בעמוד.
      ──────────────────────────────────────────────────────────── */
   :root{
-    --paper:#F5F0E8;        /* paper-300 */
-    --paper-2:#FBF8F2;      /* paper-200 */
-    --ink:#1E1B18;          /* ink-900 · 15.1 */
-    --ink-soft:#57504A;     /* ink-600 · 7.0 */
-    --ink-faint:#6F6760;    /* ink-550 · 4.9 — הכי בהיר שעדיין קריא */
-    --terracotta:#C0563B;   /* terra-500 · המותג. מילויים ללא טקסט */
-    --terracotta-fill:#9E4025; /* terra-600 · מילוי שנושא טקסט · 5.8 ✓ */
-    --terracotta-text:#7E3320; /* terra-700 · טקסט ו-focus · 7.8 ✓ */
-    --olive:#737C46;        /* olive-500 · המשפחה המשנית */
-    --olive-fill:#5A6138;   /* olive-600 · 5.8 ✓ */
-    --olive-text:#3F452A;   /* olive-700 · 8.8 ✓ */
-    --rule:#DED3C3;         /* paper-500 */
+    /* השמות המקומיים של העמוד מוזנים מ-assets/tokens.css.
+       הערכים חיים שם ורק שם. */
+    --paper:var(--paper-300);
+    --paper-2:var(--paper-200);
+    --ink:var(--ink-900);
+    --ink-soft:var(--ink-600);
+    --ink-faint:var(--ink-550);
+    --terracotta:var(--terra-500);
+    --terracotta-fill:var(--terra-600);
+    --terracotta-text:var(--terra-700);
+    --olive:var(--olive-500);
+    --olive-fill:var(--olive-600);
+    --olive-text:var(--olive-700);
+    --rule:var(--paper-500);
     --font-display:"Frank Ruhl Libre",Georgia,serif;
   }
   *{box-sizing:border-box}
@@ -215,6 +218,16 @@
     <img class="light" src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="150" height="44">
     <img class="dark"  src="assets/itb-lockup-dark.svg"    alt="" aria-hidden="true" width="150" height="44">
   </p>
+<!-- MENU:START -->
+  <nav class="nav" aria-label="ניווט ראשי">
+    <ul>
+      <li><a href="./" aria-current="page">אבחון עסקי</a></li>
+      <li><a href="services.html">שירותים</a></li>
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="#contact">יצירת קשר</a></li>
+    </ul>
+  </nav>
+<!-- MENU:END -->
 </div>
 
 <div class="wrap">

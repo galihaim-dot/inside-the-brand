@@ -12,11 +12,15 @@
 <link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/masthead.css">
 <style>
   :root{
-    --paper:#F5F0E8;--paper-2:#FBF8F2;--ink:#1E1B18;--ink-soft:#57504A;
-    --ink-faint:#6F6760;--terracotta:#C0563B;--terracotta-text:#7E3320;--rule:#DED3C3;
+    /* השמות המקומיים של העמוד מוזנים מ-assets/tokens.css. */
+    --paper:var(--paper-300);--paper-2:var(--paper-200);--ink:var(--ink-900);
+    --ink-soft:var(--ink-600);--ink-faint:var(--ink-550);
+    --terracotta:var(--terra-500);--terracotta-text:var(--terra-700);
+    --rule:var(--paper-500);
     --font-display:"Frank Ruhl Libre",Georgia,serif;
   }
   *{box-sizing:border-box}
@@ -44,6 +48,7 @@
   .box p:last-child{margin-bottom:0}
   footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--ink-faint);font-weight:300}
   footer a{color:var(--ink-soft);text-decoration:underline;margin-left:14px}
+  footer .contact{display:block;margin-bottom:9px}
   footer .rights{display:block;margin-top:8px}
   @media (max-width:600px){ .wrap{padding:30px 16px 48px} h1{font-size:27px} }
 </style>
@@ -54,6 +59,16 @@
   <p class="logo">
     <img src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="150" height="44">
   </p>
+<!-- MENU:START -->
+  <nav class="nav" aria-label="ניווט ראשי">
+    <ul>
+      <li><a href="./">אבחון עסקי</a></li>
+      <li><a href="services.html">שירותים</a></li>
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="#contact">יצירת קשר</a></li>
+    </ul>
+  </nav>
+<!-- MENU:END -->
 </div>
 
 <div class="wrap">
@@ -134,8 +149,8 @@ GitHub רושמת את כתובת ה־IP של כל מי שנכנס לאתר וש
 <p>אם המדיניות תשתנה, התאריך בראש העמוד יתעדכן. שינוי מהותי שנוגע למידע שכבר
 נאסף — אודיע עליו במייל.</p>
 
-<footer>
-  <a href="./">חזרה לשאלון</a>
+<footer id="contact">
+  <span class="contact">יצירת קשר: <a href="mailto:galia@inside-the-brand.co.il">galia@inside-the-brand.co.il</a></span>
   <a href="הצהרת-נגישות.html">הצהרת נגישות</a>
   <span class="rights"><span dir="ltr">&copy; 2026 Inside the Brand</span> · גליה ארליך. כל הזכויות שמורות.</span>
 </footer>

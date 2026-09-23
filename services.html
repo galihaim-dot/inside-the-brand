@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- מדיניות אבטחה (23.09.2026): בעמוד הזה אין סקריפט, ולכן שום סקריפט לא ירוץ בו. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="same-origin">
+<title>שירותים — Inside the Brand</title>
+<meta name="description" content="אבחון, תוכנית עבודה והטמעה לעסקים קטנים ובינוניים: איפה העסק תקוע, באיזה סדר מתקדמים, ומי מבצע. ארבעה שלבים, ושני הראשונים בחינם.">
+<link rel="icon" href="assets/itb-favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/masthead.css">
+<style>
+  /* הצבעים מגיעים כולם מ-assets/tokens.css. אין כאן אף הקס. */
+  *{box-sizing:border-box}
+  html{background:var(--surface)}
+  body{
+    margin:0;direction:rtl;text-align:right;
+    font-family:var(--font-body);
+    font-size:17px;line-height:1.75;font-weight:400;color:var(--fg);background:var(--surface);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:46px 22px 64px}
+
+  header{border-bottom:2px solid var(--fg);padding-bottom:26px;margin-bottom:38px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent-deep);font-weight:500;margin:0 0 14px}
+  h1{font-family:var(--font-display);font-size:36px;line-height:1.2;margin:0 0 14px;font-weight:700;color:var(--fg)}
+  .lede{margin:0;color:var(--fg-soft);font-weight:300;max-width:60ch}
+
+  section{margin:0 0 46px}
+  h2{font-family:var(--font-display);font-size:24px;margin:0 0 14px;font-weight:700;line-height:1.3;color:var(--fg)}
+  p,li,dd{color:var(--fg-soft);font-weight:300}
+  p{margin:0 0 14px;max-width:64ch}
+  strong{color:var(--fg);font-weight:500}
+  a{color:var(--accent-deep)}
+  a:focus-visible{outline:3px solid var(--accent-deep);outline-offset:2px;border-radius:2px}
+
+  /* למי זה מתאים — רצועה על נייר כהה יותר */
+  .fit{background:var(--surface-alt);border-radius:3px;padding:26px 26px 28px;margin:0 0 46px}
+  .fit h2{margin-top:0}
+  .fit ul{margin:0 0 16px;padding-right:20px}
+  .fit li{margin-bottom:8px;max-width:60ch}
+  .fit p:last-child{margin-bottom:0}
+
+  /* המסלול */
+  ol.path{list-style:none;margin:6px 0 0;padding:0;counter-reset:st}
+  ol.path>li{position:relative;padding:0 46px 22px 0;margin:0 0 22px;border-bottom:1px solid var(--paper-500)}
+  ol.path>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  ol.path>li::before{
+    counter-increment:st;content:counter(st);
+    position:absolute;right:0;top:1px;width:30px;height:30px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;font-weight:700;color:var(--paper);background:var(--accent-fill);
+    border-radius:50%;direction:ltr;
+  }
+  ol.path .st{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--fg);margin:0 0 4px}
+  ol.path p{margin:0 0 10px}
+  ol.path p:last-child{margin-bottom:0}
+
+  ul.areas{margin:14px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+  ul.areas li{background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:12px 15px;font-size:15.5px;margin:0}
+  ul.areas b{display:block;color:var(--fg);font-weight:600;font-size:14px;margin-bottom:2px}
+
+  /* חמש העדשות — המשפחה המשנית, זית */
+  .lenses{background:var(--olive-050);border:1px solid var(--olive-200);border-radius:3px;padding:26px 26px 28px}
+  .lenses h2{margin-top:0}
+  .lenses dl{margin:6px 0 0}
+  .lenses dl>div{border-bottom:1px solid var(--olive-200);padding:0 0 12px;margin:0 0 12px}
+  .lenses dl>div:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .lenses dt{font-weight:600;color:var(--fg);font-size:16.5px}
+  .lenses dd{margin:2px 0 0;max-width:60ch}
+  .lens-note{margin:20px 0 0;font-size:15.5px;border-right:3px solid var(--olive-400);padding-right:16px}
+
+  /* קצת עליי */
+  .me{display:flex;align-items:center;gap:16px;background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:18px 20px}
+  .me .photo{
+    flex:0 0 auto;width:60px;height:60px;border-radius:50%;
+    background:var(--accent-fill);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:22px;font-weight:700;margin:0;
+  }
+  .me p{margin:0;max-width:none}
+  .me .nm{color:var(--fg);font-weight:600;font-size:17px}
+  .me .rl{font-size:15px}
+  .me .more{margin-top:4px;font-size:15px}
+
+  /* הצעד הבא — סקשן כהה שאינו שחור */
+  .next{background:var(--ink-800);border-radius:3px;padding:28px 26px 30px;margin-top:6px}
+  .next h2{color:var(--paper);margin-bottom:8px}
+  .next p{color:var(--paper-600);max-width:52ch}
+  .cta{
+    display:inline-block;margin:12px 0 0;background:var(--accent-fill);color:var(--paper);
+    text-decoration:none;font-weight:500;font-size:17px;padding:13px 30px;border-radius:3px;
+  }
+  .cta:hover{background:var(--terra-500)}
+  .cta:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
+  .next .mail{margin-top:16px;font-size:15px}
+  .next .mail a{color:var(--terra-200)}
+
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--paper-500);font-size:13.5px;color:var(--fg-muted);font-weight:300}
+  footer .t{color:var(--accent-deep)}
+  footer .contact{display:block;margin-top:10px}
+  footer .contact a{color:var(--fg-soft);overflow-wrap:anywhere}
+  footer .legal-links{display:block;margin-top:10px}
+  footer .legal-links a{color:var(--fg-soft);text-decoration:underline;margin-left:14px}
+  footer .rights{display:block;margin-top:8px}
+
+  @media (max-width:600px){
+    .wrap{padding:30px 16px 48px}
+    h1{font-size:27px} h2{font-size:21px}
+    ul.areas{grid-template-columns:1fr}
+    .fit,.lenses{padding:20px 18px 22px}
+    .next{padding:24px 20px 26px}
+    .me{gap:13px;padding:15px 16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="logo">
+    <img src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="150" height="44">
+  </p>
+<!-- MENU:START -->
+  <nav class="nav" aria-label="ניווט ראשי">
+    <ul>
+      <li><a href="./">אבחון עסקי</a></li>
+      <li><a href="services.html" aria-current="page">שירותים</a></li>
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="#contact">יצירת קשר</a></li>
+    </ul>
+  </nav>
+<!-- MENU:END -->
+</div>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">שירותים</p>
+  <h1>כשהעסק תקוע, השאלה הראשונה היא איפה.</h1>
+  <p class="lede">Inside the Brand מלווה חברות קטנות ובינוניות שכבר יש להן עסק חי: אבחון, תוכנית עבודה, והטמעה עד שהמערכת כולה מתפקדת יחד.</p>
+</header>
+
+<section>
+  <h2>איפה זה תקוע</h2>
+  <p>העסק עובד, אבל הוא הגיע לנקודה שבה הוא לא מצליח להתרומם. יש תנועה לאתר, יש פניות, והמכירות לא ממריאות.</p>
+  <p>הבעיה יכולה להיות בשיווק, בתפעול, במערכות, בלוגיסטיקה או ברווחיות. זה מתברר רק כשעוצרים רגע ובודקים. קורה שקמפיין מכניס הזמנות למוצר שכבר אזל במחסן, או שהמשלוח מתעכב שבוע. התקציב הלך, והלקוח המאוכזב לא חוזר. וכשהמסר לא חד, הקונה לא מבין למה לשלם אצלכם יותר, ומשווה אתכם למתחרים רק לפי המחיר.</p>
+  <p>מה שאני מביאה הוא <strong>בהירות</strong>: מה כבר עובד, מה תקוע, באיזה סדר מתקדמים, ומה יכול לחכות.</p>
+</section>
+
+<section class="fit">
+  <h2>למי זה מתאים</h2>
+  <p>אני עוזרת לחנויות, לרשתות צעירות ולמותגי אי־קומרס, בעיקר באופנה, בביוטי, בלייף סטייל ובאירוח. לרוב יש מוצר טוב ולקוחות שאוהבים אותו.</p>
+  <p><strong>אולי תזדהו עם אחת מאלה:</strong></p>
+  <ul>
+    <li>מי שהקים את העסק עדיין מחליט הכול לבד.</li>
+    <li>יש כמה ערוצים במקביל (סניפים, וולט, B2B, אינסטגרם), וכל אחד מהם מתנהל לחוד.</li>
+    <li>הנתונים עוברים ביד בין הקופה, המלאי והאתר.</li>
+    <li>יש דברים שקורים רק כשהבעלים עושים אותם בעצמם.</li>
+    <li>ההכנסות הגיעו לתקרה, או שהן גדלות מהר יותר מהתשתית.</li>
+  </ul>
+  <p>העבודה הזו מתאימה לעסק שהבעלים עדיין בתוכו, שמחפש סדר מערכתי יותר מקמפיין בודד, ופתוח להחליף הרגלים ישנים בדרך. זה תהליך משותף, ואני איתכם לכל אורכו.</p>
+</section>
+
+<section>
+  <h2>המסלול</h2>
+  <p>ארבעה שלבים, ושני הראשונים בחינם. אחרי כל אחד מהם אתם קובעים אם להתקדם.</p>
+  <ol class="path">
+    <li>
+      <p class="st">שאלון קצר</p>
+      <p>כעשר דקות, בשפה שלכם, בלי לשלוף קובצי אקסל.</p>
+    </li>
+    <li>
+      <p class="st">תמונת מצב</p>
+      <p>קריאה מבחוץ, לפי התשובות שלכם: מה לדעתי חוסם אתכם, ומה הכי דחוף. כל מקום שצריך בו נתונים כדי להיות בטוחה, אני מסמנת במפורש.</p>
+    </li>
+    <li>
+      <p class="st">אבחון עומק</p>
+      <p>כאן אני כבר בפנים: בתוך ההזמנות, החשבונות והאנליטיקס, עד שורש הבעיה. האבחון נשען על הנתונים עצמם, ולכן הוא מתחיל בגישה אליהם. בסיום יש פגישה ומסמך שמדרג מה בוער.</p>
+    </li>
+    <li>
+      <p class="st">תוכנית והטמעה</p>
+      <p>כאן המסקנות הופכות למעשים. אני נמצאת בשטח, רותמת את הספקים והפרילנסרים, כותבת נהלים, ונשארת עד שהעסק מריץ את זה לבד. ההיקף נגזר ממה שהתגלה:</p>
+      <ul class="areas">
+        <li><b>מיתוג ושיווק</b>
+          אסטרטגיה, קריאייטיב, קמפיינים, מועדון לקוחות.</li>
+        <li><b>אתר ואי־קומרס</b>
+          אפיון ופיתוח, UX, אחוזי המרה.</li>
+        <li><b>מערכות ותפעול</b>
+          ERP ו־CRM, הזרימה ביניהם, השגרה היומית.</li>
+        <li><b>כסף</b>
+          ניתוח ביצועים, תמחור, רווחיות.</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section class="lenses">
+  <h2>חמש העדשות</h2>
+  <p>כל המלצה נמדדת מול חמש השאלות האלה, וכל אחת מהן מוסיפה חלק מהתמונה.</p>
+  <dl>
+    <div><dt>מותג</dt>
+        <dd>מה הקהל קולט עליכם במבט חטוף, והאם זה המסר שרציתם.</dd></div>
+    <div><dt>חוויית לקוח</dt>
+        <dd>איפה במסע הוא מתלהב, איפה הוא מתלבט, ואיפה כדאי ללוות אותו.</dd></div>
+    <div><dt>תפעול</dt>
+        <dd>מה מחזיק כשהביקוש מזנק, ומה תלוי באדם אחד.</dd></div>
+    <div><dt>מכירות</dt>
+        <dd>מי קונה, מאיפה, ואיזה ערוץ מוכן לגדול.</dd></div>
+    <div><dt>רווחיות</dt>
+        <dd>איזה מוצר או ערוץ באמת מרוויח, ואיזה מסובסד בלי שאף אחד שם לב.</dd></div>
+  </dl>
+  <p class="lens-note">ב־Mano Vino, מה שהצטייר כבאג באתר התגלה כקשור גם ל־SAP וגם למה שקורה על המדף.</p>
+</section>
+
+<section>
+  <h2>קצת עליי</h2>
+  <div class="me">
+    <p class="photo" aria-hidden="true">גא</p>
+    <div>
+      <p class="nm">גליה ארליך</p>
+      <p class="rl">מובילת אי־קומרס ועסקים דיגיטליים.</p>
+      <p class="more"><a href="about.html">הסיפור המלא ←</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <h2>הצעד הבא</h2>
+  <p>מתחילים בשאלון הקצר. כעשר דקות, ואחריו תקבלו ממני תמונת מצב.</p>
+  <p><a class="cta" href="./">לשאלון האבחון</a></p>
+  <p class="mail">או ישר למייל: <a href="mailto:galia@inside-the-brand.co.il">galia@inside-the-brand.co.il</a></p>
+</section>
+
+<footer id="contact">
+  Inside the Brand · <span class="t">Where Brand, Operations &amp; Revenue Connect</span>
+  <span class="contact">יצירת קשר: <a href="mailto:galia@inside-the-brand.co.il">galia@inside-the-brand.co.il</a></span>
+  <span class="legal-links">
+    <a href="מדיניות-פרטיות.html">מדיניות פרטיות</a>
+    <a href="הצהרת-נגישות.html">הצהרת נגישות</a>
+  </span>
+  <span class="rights"><span dir="ltr">&copy; 2026 Inside the Brand</span> · גליה ארליך. כל הזכויות שמורות.</span>
+</footer>
+
+</div>
+</body>
+</html>
