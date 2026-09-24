@@ -143,12 +143,15 @@
       --paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#8D8377;
       --rule:#332E28;--terracotta:#D9714F;--terracotta-fill:#C0563B;--terracotta-text:#E08E70;
       --olive:#A8B181;--olive-fill:#737C46;--olive-text:#B9C195;
+      /* התפריט והלוגו (masthead.css) קוראים לטוקנים המשותפים, ולכן גם הם מתחלפים כאן */
+      --fg:#EDE7DD;--fg-soft:#A79E92;--paper-500:#332E28;--accent:#D9714F;--accent-deep:#E08E70;--terra-700:#E08E70;
     }
   }
   :root[data-theme="dark"]{
     --paper:#141210;--paper-2:#1C1917;--ink:#EDE7DD;--ink-soft:#A79E92;--ink-faint:#8D8377;
     --rule:#332E28;--terracotta:#D9714F;--terracotta-fill:#C0563B;--terracotta-text:#E08E70;
     --olive:#A8B181;--olive-fill:#737C46;--olive-text:#B9C195;
+    --fg:#EDE7DD;--fg-soft:#A79E92;--paper-500:#332E28;--accent:#D9714F;--accent-deep:#E08E70;--terra-700:#E08E70;
   }
   :root[data-theme="light"]{
     --paper:#F5F0E8;--paper-2:#FBF8F2;--ink:#1E1B18;--ink-soft:#57504A;--ink-faint:#6F6760;
@@ -181,6 +184,8 @@
   .legal a{color:var(--terracotta-text)}
   .consent + .consent{margin-top:-18px}
   .consent .opt{font-size:13.5px;color:var(--ink-faint);display:block;margin-top:3px}
+  footer .contact{display:block;margin-top:10px}
+  footer .contact a{color:var(--ink-soft);overflow-wrap:anywhere}
   footer .legal-links{margin-top:10px;display:block}
   footer .legal-links a{color:var(--ink-soft);text-decoration:underline;margin-left:14px}
   footer .rights{margin-top:8px;display:block;color:var(--ink-faint)}
@@ -378,6 +383,7 @@
 
 <footer id="contact">
   Inside the Brand · <span class="t">Where Brand, Operations &amp; Revenue Connect</span>
+  <span class="contact">יצירת קשר: <a href="mailto:galia@inside-the-brand.co.il">galia@inside-the-brand.co.il</a></span>
   <span class="legal-links">
     <a href="מדיניות-פרטיות.html">מדיניות פרטיות</a>
     <a href="הצהרת-נגישות.html">הצהרת נגישות</a>
