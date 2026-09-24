@@ -70,3 +70,7 @@
   .masthead .nav ul{gap:4px 20px}
   .masthead .nav a{font-size:14.5px}
 }
+
+/* הלוגו הוא קישור לדף הבית (24.9.2026) */
+.masthead .home-link{display:inline-block}
+.masthead .home-link:focus-visible{outline:3px solid var(--terra-700);outline-offset:4px;border-radius:2px}
