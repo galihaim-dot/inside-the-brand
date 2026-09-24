@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- מדיניות אבטחה (24.09.2026): בעמוד הזה אין סקריפט, ולכן שום סקריפט לא ירוץ בו. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="same-origin">
+<title>Inside the Brand · גליה ארליך</title>
+<meta name="description" content="אבחון, תוכנית עבודה והטמעה בשטח לעסקים קטנים ובינוניים. שיווק, תפעול, מערכות ורווחיות, כמערכת אחת.">
+<link rel="icon" href="assets/itb-favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/masthead.css">
+<style>
+  /* דף הבית (24.9.2026). מטרה אחת: תוך 20 שניות להבין מה מקבלים.
+     הצבעים מגיעים כולם מ-assets/tokens.css. אין כאן אף הקס. */
+  *{box-sizing:border-box}
+  html{background:var(--surface)}
+  body{
+    margin:0;direction:rtl;text-align:right;
+    font-family:var(--font-body);
+    font-size:17px;line-height:1.7;font-weight:400;color:var(--fg);background:var(--surface);
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:46px 22px 64px}
+  p{margin:0}
+  a{color:var(--accent-deep)}
+  a:focus-visible{outline:3px solid var(--accent-deep);outline-offset:2px;border-radius:2px}
+
+  /* המסך הראשון */
+  .hero{text-align:center;padding:10px 0 56px;border-bottom:1px solid var(--paper-500);margin-bottom:52px}
+  .hero h1{font-family:var(--font-display);font-size:42px;line-height:1.2;font-weight:700;margin:0 0 10px;color:var(--fg)}
+  .hero .h1-2{font-family:var(--font-display);font-size:25px;line-height:1.35;font-weight:500;color:var(--accent-deep);margin:0 0 22px}
+  .hero .lede{color:var(--fg-soft);font-weight:300;max-width:52ch;margin:0 auto 30px}
+  .cta{
+    display:inline-block;background:var(--accent-fill);color:var(--paper);
+    text-decoration:none;font-weight:500;font-size:18px;padding:14px 34px;border-radius:3px;
+  }
+  .cta:hover{background:var(--terra-700)}
+  .cta:focus-visible{outline:3px solid var(--terra-700);outline-offset:3px}
+  .micro{margin-top:12px;font-size:14px;color:var(--fg-muted);font-weight:400}
+
+  section{margin:0 0 52px}
+  h2{font-family:var(--font-display);font-size:25px;margin:0 0 18px;font-weight:700;line-height:1.3;color:var(--fg)}
+  .more{margin-top:16px;font-size:15.5px}
+
+  /* בלוק 1: התגיות */
+  ul.tags{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+  ul.tags li{background:var(--terra-050);border:1px solid var(--terra-200);color:var(--terra-700);
+    font-weight:500;font-size:16px;padding:7px 18px;border-radius:999px}
+  .tags-note{color:var(--fg-soft);font-weight:300}
+
+  /* בלוק 2: ארבעת השלבים */
+  ol.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:st}
+  ol.steps li{position:relative;background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;
+    padding:16px 14px 14px;font-weight:500;font-size:16px;line-height:1.35;color:var(--fg)}
+  ol.steps li::before{
+    counter-increment:st;content:counter(st);
+    display:flex;align-items:center;justify-content:center;width:28px;height:28px;margin-bottom:10px;
+    font-size:14px;font-weight:700;color:var(--paper);background:var(--accent-fill);border-radius:50%;direction:ltr;
+  }
+  .free{display:block;margin-top:6px;font-size:13.5px;font-weight:500;color:var(--olive-700)}
+
+  /* בלוק 3: מי מאחורי זה */
+  .me{background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:26px 26px 24px}
+  .me h2{margin-bottom:16px}
+  .who{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+  .who img{width:60px;height:60px;flex:0 0 auto}
+  .who .nm{font-weight:600;font-size:18px;color:var(--fg)}
+  .who .rl{font-size:15.5px;color:var(--fg-soft);font-weight:300}
+  dl.nums{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  dl.nums>div{border-top:2px solid var(--accent-fill);padding-top:12px}
+  /* המספרים ב-Heebo: בגופן התצוגה סימן ה-₪ נראה כמו האות ש */
+  dl.nums dt{font-family:var(--font-body);font-size:27px;font-weight:700;line-height:1.2;color:var(--fg)}
+  dl.nums dd{margin:4px 0 0;font-size:15px;color:var(--fg-soft);font-weight:300;line-height:1.45}
+  dl.nums .biz{display:block;color:var(--ink-550);font-weight:400;font-size:14px}
+
+  .close{text-align:center;margin:0 0 20px}
+
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--paper-500);font-size:13.5px;color:var(--fg-muted);font-weight:300}
+  footer .t{color:var(--accent-deep)}
+  footer .contact{display:block;margin-top:10px}
+  footer .contact a{color:var(--fg-soft);overflow-wrap:anywhere}
+  footer .legal-links{display:block;margin-top:10px}
+  footer .legal-links a{color:var(--fg-soft);text-decoration:underline;margin-left:14px}
+  footer .rights{display:block;margin-top:8px}
+
+  @media (max-width:700px){
+    ol.steps{grid-template-columns:1fr 1fr}
+    dl.nums{grid-template-columns:1fr;gap:16px}
+  }
+  @media (max-width:600px){
+    .wrap{padding:30px 16px 48px}
+    .hero{padding:0 0 40px;margin-bottom:40px}
+    .hero h1{font-size:30px}
+    .hero .h1-2{font-size:20px}
+    h2{font-size:22px}
+    .me{padding:20px 18px}
+    section{margin-bottom:42px}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="logo"><a href="./" class="home-link">
+    <img src="assets/itb-lockup-primary.svg" alt="Inside the Brand · לדף הבית" width="150" height="44">
+  </a></p>
+<!-- MENU:START -->
+  <nav class="nav" aria-label="ניווט ראשי">
+    <ul>
+      <li><a href="diagnosis.html">אבחון עסקי</a></li>
+      <li><a href="services.html">שירותים</a></li>
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="#contact">יצירת קשר</a></li>
+    </ul>
+  </nav>
+<!-- MENU:END -->
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <h1>העסק עובד, אבל מרגיש תקוע?</h1>
+  <p class="h1-2">אני עוזרת לכם להבין את מקור הבעיה, ומסדרת.</p>
+  <p class="lede">אבחון, תוכנית עבודה והטמעה בשטח לעסקים קטנים ובינוניים. שיווק, תפעול, מערכות ורווחיות, כמערכת אחת.</p>
+  <a class="cta" href="diagnosis.html">מתחילים בשאלון קצר ←</a>
+  <p class="micro">10 דקות · בחינם · בסופו תקבלו תמונת מצב</p>
+</header>
+
+<section aria-labelledby="h-block1">
+  <h2 id="h-block1">מה מונע מהעסק לגדול?</h2>
+  <ul class="tags">
+    <li>שיווק</li>
+    <li>תפעול</li>
+    <li>מערכות</li>
+    <li>לוגיסטיקה</li>
+    <li>רווחיות</li>
+  </ul>
+  <p class="tags-note">לרוב, התשובה נמצאת ביותר ממקום אחד.</p>
+</section>
+
+<section aria-labelledby="h-block2">
+  <h2 id="h-block2">איך זה עובד</h2>
+  <ol class="steps">
+    <li>שאלון קצר <span class="free">בחינם</span></li>
+    <li>תמונת מצב <span class="free">בחינם</span></li>
+    <li>אבחון עומק</li>
+    <li>תוכנית והטמעה</li>
+  </ol>
+  <p class="more"><a href="services.html">כל הפרטים ←</a></p>
+</section>
+
+<section class="me" aria-labelledby="h-block3">
+  <h2 id="h-block3">מי מאחורי זה</h2>
+  <div class="who">
+    <img src="assets/itb-mark-terracotta.svg" alt="" width="60" height="60">
+    <div>
+      <p class="nm">גליה ארליך</p>
+      <p class="rl">מובילת אי־קומרס ועסקים דיגיטליים</p>
+    </div>
+  </div>
+  <dl class="nums">
+    <div>
+      <dt><span dir="ltr">₪400K → ₪1M</span></dt>
+      <dd>הכנסות אונליין<span class="biz">Mano Vino</span></dd>
+    </div>
+    <div>
+      <dt>פי 7</dt>
+      <dd>ערוץ וולט<span class="biz">Zest</span></dd>
+    </div>
+    <div>
+      <dt><span dir="ltr">$100K+</span> בחודש</dt>
+      <dd>מכירות אונליין<span class="biz">Freedom Moses</span></dd>
+    </div>
+  </dl>
+  <p class="more"><a href="about.html">הסיפור המלא ←</a></p>
+</section>
+
+<p class="close"><a class="cta" href="diagnosis.html">מתחילים בשאלון קצר ←</a></p>
+
+<footer id="contact">
+  Inside the Brand · <span class="t">Where Brand, Operations &amp; Revenue Connect</span>
+  <span class="contact">יצירת קשר: <a href="mailto:galia@inside-the-brand.co.il">galia@inside-the-brand.co.il</a></span>
+  <span class="legal-links">
+    <a href="מדיניות-פרטיות.html">מדיניות פרטיות</a>
+    <a href="הצהרת-נגישות.html">הצהרת נגישות</a>
+  </span>
+  <span class="rights"><span dir="ltr">&copy; 2026 Inside the Brand</span> · גליה ארליך. כל הזכויות שמורות.</span>
+</footer>
+
+</div>
+</body>
+</html>
