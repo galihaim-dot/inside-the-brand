@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- מדיניות אבטחה (26.09.2026), כמו בעמוד השאלון: רק הסקריפט של הטופס רץ,
+     והשליחה יוצאת רק לתיבת ה-Apps Script.
+     ⚠️ ה-sha256 הוא טביעת האצבע של הסקריפט שבתחתית העמוד. כל שינוי בסקריפט,
+     אפילו רווח, מחייב לחשב אותה מחדש (על תוכן עם שורות LF). אחרת הדפדפן חוסם
+     את הסקריפט והטופס מפסיק לשלוח. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-d5IP9b//mBeW6SXmXDZtyEUvlwvOQA4jBkczvmItJfs='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; connect-src https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="same-origin">
+<title>יצירת קשר — Inside the Brand</title>
+<meta name="description" content="יצירת קשר עם גליה ארליך, Inside the Brand: טלפון, מייל, או טופס פנייה קצר.">
+<link rel="icon" href="assets/itb-favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/type.css">
+<link rel="stylesheet" href="assets/masthead.css">
+<style>
+  /* הצבעים מגיעים כולם מ-assets/tokens.css, והגדלים מ-assets/type.css. */
+  *{box-sizing:border-box}
+  html{background:var(--surface)}
+  body{
+    margin:0;direction:rtl;text-align:right;
+    font-family:var(--font-body);
+    font-size:var(--fs-body);line-height:1.7;font-weight:var(--fw-body);color:var(--fg);background:var(--surface);
+  }
+  a{color:var(--accent-deep)}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+    outline:3px solid var(--accent-deep);outline-offset:2px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:56px 24px 96px}
+
+  h1{font-family:var(--font-display);font-size:var(--fs-h1);line-height:1.2;margin:0 0 12px;font-weight:var(--fw-head);color:var(--fg)}
+  .lede{margin:0;color:var(--fg-soft);max-width:60ch}
+
+  /* טלפון ומייל: שתי שורות שקטות, לפני הטופס */
+  .direct{margin:30px 0 40px;padding:18px 0;border-top:1px solid var(--paper-500);border-bottom:1px solid var(--paper-500);
+    display:flex;flex-wrap:wrap;gap:10px 44px}
+  .direct div{margin:0}
+  .direct dt{font-size:var(--fs-label);font-weight:var(--fw-heavy);color:var(--accent-deep);margin:0 0 2px}
+  .direct dd{margin:0}
+  .direct a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--paper-600)}
+  .direct a:hover{border-bottom-color:var(--accent)}
+
+  h2{font-family:var(--font-display);font-size:var(--fs-h2);margin:0 0 18px;font-weight:var(--fw-head);line-height:1.3;color:var(--fg)}
+
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+  @media(max-width:520px){.cgrid{grid-template-columns:1fr}}
+  .field{margin:0}
+  .field.full{margin-top:16px}
+  .field label{display:block;font-weight:var(--fw-strong);margin:0 0 7px}
+  .req{color:var(--accent-deep)}
+  input[type=text],input[type=email],input[type=tel],textarea,select{
+    width:100%;font-family:inherit;font-size:var(--fs-body);color:var(--fg);
+    background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;
+    padding:11px 13px;line-height:1.6;
+  }
+  select{appearance:auto}
+  textarea{min-height:140px;resize:vertical}
+  input:focus,textarea:focus,select:focus{border-color:var(--accent)}
+
+  .legal{margin:22px 0 18px;font-size:var(--fs-small);color:var(--fg-soft)}
+  .consent{display:flex;gap:11px;align-items:flex-start;margin:0 0 28px;font-size:var(--fs-small);color:var(--fg-soft)}
+  .consent input{margin-top:5px;flex:0 0 auto;width:16px;height:16px;accent-color:var(--accent-fill)}
+
+  .submit{background:var(--accent-fill);color:var(--paper);border:none;border-radius:3px;padding:14px 34px;
+    font-family:inherit;font-size:var(--fs-body);font-weight:var(--fw-heavy);cursor:pointer}
+  .submit:hover{background:var(--accent-deep)}
+  .submit:disabled{opacity:.6;cursor:default}
+  .status{margin:14px 0 0;font-size:var(--fs-small);color:var(--status-risk)}
+  .status:empty{display:none}
+
+  /* שדה מלכודת לרובוטים: מחוץ למסך, לא מוצג ולא מוקרא */
+  .hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+  #thanks{display:none;padding:8px 0 0}
+  #thanks p{color:var(--fg-soft);max-width:60ch;margin:0 0 8px}
+
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--paper-500);font-size:var(--fs-small);color:var(--fg-muted);font-weight:var(--fw-body)}
+  footer .t{color:var(--accent-deep)}
+  footer .contact{display:block;margin-top:10px}
+  footer .contact a{color:var(--fg-soft);overflow-wrap:anywhere}
+  footer .legal-links{display:block;margin-top:10px}
+  footer .legal-links a{color:var(--fg-soft);text-decoration:underline;margin-left:14px}
+  footer .rights{display:block;margin-top:8px}
+
+  @media (max-width:600px){
+    .wrap{padding:30px 16px 48px}
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <p class="logo"><a href="./" class="home-link">
+    <img src="assets/itb-lockup-primary.svg" alt="Inside the Brand · לדף הבית" width="150" height="44">
+  </a></p>
+<!-- MENU:START -->
+  <nav class="nav" aria-label="ניווט ראשי">
+    <ul>
+      <li><a href="diagnosis.html">אבחון עסקי</a></li>
+      <li><a href="services.html">שירותים</a></li>
+      <li><a href="about.html">אודות</a></li>
+      <li><a href="contact.html" aria-current="page">יצירת קשר</a></li>
+    </ul>
+  </nav>
+<!-- MENU:END -->
+</div>
+
+<div class="wrap">
+<main>
+
+<h1>יצירת קשר</h1>
+<p class="lede">השאירו פרטים ואחזור אליכם תוך יום עסקים.</p>
+
+<dl class="direct">
+  <div>
+    <dt>טלפון</dt>
+    <dd><a href="tel:+972547233460" dir="ltr">054-723-3460</a></dd>
+  </div>
+  <div>
+    <dt>מייל</dt>
+    <dd><a href="mailto:galia@inside-the-brand.co.il" dir="ltr">galia@inside-the-brand.co.il</a></dd>
+  </div>
+</dl>
+
+<div id="formwrap">
+<h2>כתבו לי</h2>
+
+<form id="contact-form">
+  <!-- השדה הזה מנתב את השליחה בתיבה ללשונית "פניות" ולא לשאלון.
+       הערך חייב להיות זהה ל-CONTACT_TYPE בקוד התיבה. -->
+  <input type="hidden" name="סוג טופס" value="פנייה">
+
+  <div class="cgrid">
+    <div class="field">
+      <label for="name">שם מלא <span class="req" aria-hidden="true">*</span></label>
+      <input type="text" id="name" name="שם מלא" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="biz">שם העסק</label>
+      <input type="text" id="biz" name="שם העסק" autocomplete="organization">
+    </div>
+    <div class="field">
+      <label for="phone">טלפון</label>
+      <input type="tel" id="phone" name="טלפון" autocomplete="tel" dir="ltr" style="text-align:right">
+    </div>
+    <div class="field">
+      <label for="email">אימייל <span class="req" aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="אימייל" autocomplete="email" dir="ltr" style="text-align:right" required>
+    </div>
+  </div>
+
+  <div class="field full">
+    <label for="reason">סיבת הפנייה <span class="req" aria-hidden="true">*</span></label>
+    <select id="reason" name="סיבת הפנייה" required>
+      <option value="" selected disabled>בחירה מהרשימה</option>
+      <option>אבחון עומק לעסק</option>
+      <option>שאלה על השאלון או על תמונת המצב</option>
+      <option>ליווי או פרויקט (אתר, מערכות, תפעול)</option>
+      <option>שיתוף פעולה</option>
+      <option>אחר</option>
+    </select>
+  </div>
+
+  <div class="field full">
+    <label for="msg">ההודעה <span class="req" aria-hidden="true">*</span></label>
+    <textarea id="msg" name="הודעה" maxlength="5000" required></textarea>
+  </div>
+
+  <p class="legal">שדות המסומנים ב־<span class="req" aria-hidden="true">*</span> הם שדות חובה.
+    מה קורה למידע: <a href="מדיניות-פרטיות.html">מדיניות הפרטיות</a>.</p>
+
+  <label class="consent">
+    <input type="checkbox" name="הסכמה" required>
+    <span>קראתי את <a href="מדיניות-פרטיות.html">מדיניות הפרטיות</a> ואני מאשר/ת שמירת
+      הפרטים שמסרתי לצורך מענה על הפנייה.
+      <span class="req" aria-hidden="true">*</span></span>
+  </label>
+
+  <input type="hidden" name="גרסת מדיניות" value="26/09/2026">
+
+  <!-- שדה מלכודת לרובוטים. השם ref_code חייב להיות זהה ל-HONEYPOT בקוד התיבה. -->
+  <div class="hp" aria-hidden="true">
+    <label for="ref_code">קוד הפניה</label>
+    <input type="text" id="ref_code" name="ref_code" tabindex="-1" autocomplete="off">
+  </div>
+
+  <button type="submit" class="submit">שליחה</button>
+  <p class="status" id="status" role="alert"></p>
+</form>
+</div>
+
+<div id="thanks" tabindex="-1">
+  <h2>תודה, קיבלתי את הפנייה.</h2>
+  <p>גליה</p>
+</div>
+
+</main>
+
+<footer id="contact">
+  Inside the Brand · <span class="t">Where Brand, Operations &amp; Revenue Connect</span>
+  <span class="contact">יצירת קשר: <a href="mailto:galia@inside-the-brand.co.il">galia@inside-the-brand.co.il</a></span>
+  <span class="legal-links">
+    <a href="מדיניות-פרטיות.html">מדיניות פרטיות</a>
+    <a href="הצהרת-נגישות.html">הצהרת נגישות</a>
+  </span>
+  <span class="rights"><span dir="ltr">&copy; 2026 Inside the Brand</span> · גליה ארליך. כל הזכויות שמורות.</span>
+</footer>
+
+</div>
+<script>
+  // אותה תיבה כמו השאלון. השדה "סוג טופס" מנתב את הפנייה ללשונית "פניות".
+  const ACTION_URL = "https://script.google.com/macros/s/AKfycbzuYNkZ0ssZlXxe4U9F-bZvHSw4SiOiaT1eHTKO44ofqtpIrGNe5B8L0fFg6Gr_-5k46g/exec";
+  const form = document.getElementById('contact-form');
+  const btn = form.querySelector('.submit');
+  const status = document.getElementById('status');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    btn.disabled = true; btn.textContent = 'שולח…'; status.textContent = '';
+    try{
+      await fetch(ACTION_URL, { method:'POST', mode:'no-cors', body: new FormData(form) });
+      document.getElementById('formwrap').style.display = 'none';
+      const thanks = document.getElementById('thanks');
+      thanks.style.display = 'block';
+      thanks.focus();
+    }catch(err){
+      btn.disabled = false; btn.textContent = 'שליחה';
+      status.textContent = 'משהו השתבש בשליחה. אפשר לנסות שוב, או לכתוב ישירות ל-galia@inside-the-brand.co.il';
+    }
+  });
+</script>
+</body>
+</html>
