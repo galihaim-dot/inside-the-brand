@@ -13,6 +13,7 @@
 <link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/type.css">
 <link rel="stylesheet" href="assets/masthead.css">
 <style>
   /* הצבעים מגיעים כולם מ-assets/tokens.css. אין כאן אף הקס. */
@@ -21,21 +22,21 @@
   body{
     margin:0;direction:rtl;text-align:right;
     font-family:var(--font-body);
-    font-size:17px;line-height:1.75;font-weight:400;color:var(--fg);background:var(--surface);
+    font-size:var(--fs-body);line-height:1.75;font-weight:var(--fw-body);color:var(--fg);background:var(--surface);
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:760px;margin:0 auto;padding:46px 22px 64px}
 
   header{border-bottom:2px solid var(--fg);padding-bottom:26px;margin-bottom:38px}
-  .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent-deep);font-weight:500;margin:0 0 14px}
-  h1{font-family:var(--font-display);font-size:36px;line-height:1.2;margin:0 0 14px;font-weight:700;color:var(--fg)}
-  .lede{margin:0;color:var(--fg-soft);font-weight:300;max-width:60ch}
+  .eyebrow{font-size:var(--fs-label);color:var(--accent-deep);font-weight:var(--fw-heavy);margin:0 0 14px}
+  h1{font-family:var(--font-display);font-size:var(--fs-h1);line-height:1.2;margin:0 0 14px;font-weight:var(--fw-head);color:var(--fg)}
+  .lede{margin:0;color:var(--fg-soft);font-weight:var(--fw-body);max-width:60ch}
 
   section{margin:0 0 46px}
-  h2{font-family:var(--font-display);font-size:24px;margin:0 0 14px;font-weight:700;line-height:1.3;color:var(--fg)}
-  p,li,dd{color:var(--fg-soft);font-weight:300}
+  h2{font-family:var(--font-display);font-size:var(--fs-h2);margin:0 0 14px;font-weight:var(--fw-head);line-height:1.3;color:var(--fg)}
+  p,li,dd{color:var(--fg-soft);font-weight:var(--fw-body)}
   p{margin:0 0 14px;max-width:64ch}
-  strong{color:var(--fg);font-weight:500}
+  strong{color:var(--fg);font-weight:var(--fw-strong)}
   a{color:var(--accent-deep)}
   a:focus-visible{outline:3px solid var(--accent-deep);outline-offset:2px;border-radius:2px}
 
@@ -54,16 +55,16 @@
     counter-increment:st;content:counter(st);
     position:absolute;right:0;top:1px;width:30px;height:30px;
     display:flex;align-items:center;justify-content:center;
-    font-size:14px;font-weight:700;color:var(--paper);background:var(--accent-fill);
+    font-size:var(--fs-small);font-weight:var(--fw-heavy);color:var(--paper);background:var(--accent-fill);
     border-radius:50%;direction:ltr;
   }
-  ol.path .st{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--fg);margin:0 0 4px}
+  ol.path .st{font-family:var(--font-display);font-size:var(--fs-h3);font-weight:var(--fw-head);color:var(--fg);margin:0 0 4px}
   ol.path p{margin:0 0 10px}
   ol.path p:last-child{margin-bottom:0}
 
   ul.areas{margin:14px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
-  ul.areas li{background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:12px 15px;font-size:15.5px;margin:0}
-  ul.areas b{display:block;color:var(--fg);font-weight:600;font-size:14px;margin-bottom:2px}
+  ul.areas li{background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:12px 15px;font-size:var(--fs-body);margin:0}
+  ul.areas b{display:block;color:var(--fg);font-weight:var(--fw-strong);font-size:var(--fs-small);margin-bottom:2px}
 
   /* חמש העדשות — המשפחה המשנית, זית */
   .lenses{background:var(--olive-050);border:1px solid var(--olive-200);border-radius:3px;padding:26px 26px 28px}
@@ -71,9 +72,9 @@
   .lenses dl{margin:6px 0 0}
   .lenses dl>div{border-bottom:1px solid var(--olive-200);padding:0 0 12px;margin:0 0 12px}
   .lenses dl>div:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
-  .lenses dt{font-weight:600;color:var(--fg);font-size:16.5px}
+  .lenses dt{font-weight:var(--fw-strong);color:var(--fg);font-size:var(--fs-body)}
   .lenses dd{margin:2px 0 0;max-width:60ch}
-  .lens-note{margin:20px 0 0;font-size:15.5px;border-right:3px solid var(--olive-400);padding-right:16px}
+  .lens-note{margin:20px 0 0;font-size:var(--fs-body);border-right:3px solid var(--olive-400);padding-right:16px}
 
   /* קצת עליי */
   .me{display:flex;align-items:center;gap:16px;background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:18px 20px}
@@ -81,12 +82,12 @@
     flex:0 0 auto;width:60px;height:60px;border-radius:50%;
     background:var(--accent-fill);color:var(--paper);
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:22px;font-weight:700;margin:0;
+    font-family:var(--font-display);font-size:var(--fs-h3);font-weight:var(--fw-head);margin:0;
   }
   .me p{margin:0;max-width:none}
-  .me .nm{color:var(--fg);font-weight:600;font-size:17px}
-  .me .rl{font-size:15px}
-  .me .more{margin-top:4px;font-size:15px}
+  .me .nm{color:var(--fg);font-weight:var(--fw-strong);font-size:var(--fs-body)}
+  .me .rl{font-size:var(--fs-small)}
+  .me .more{margin-top:4px;font-size:var(--fs-small)}
 
   /* הצעד הבא — סקשן כהה שאינו שחור */
   .next{background:var(--ink-800);border-radius:3px;padding:28px 26px 30px;margin-top:6px}
@@ -94,14 +95,14 @@
   .next p{color:var(--paper-600);max-width:52ch}
   .cta{
     display:inline-block;margin:12px 0 0;background:var(--accent-fill);color:var(--paper);
-    text-decoration:none;font-weight:500;font-size:17px;padding:13px 30px;border-radius:3px;
+    text-decoration:none;font-weight:var(--fw-heavy);font-size:var(--fs-body);padding:13px 30px;border-radius:3px;
   }
   .cta:hover{background:var(--terra-500)}
   .cta:focus-visible{outline:3px solid var(--paper);outline-offset:3px}
-  .next .mail{margin-top:16px;font-size:15px}
+  .next .mail{margin-top:16px;font-size:var(--fs-small)}
   .next .mail a{color:var(--terra-200)}
 
-  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--paper-500);font-size:13.5px;color:var(--fg-muted);font-weight:300}
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--paper-500);font-size:var(--fs-small);color:var(--fg-muted);font-weight:var(--fw-body)}
   footer .t{color:var(--accent-deep)}
   footer .contact{display:block;margin-top:10px}
   footer .contact a{color:var(--fg-soft);overflow-wrap:anywhere}
@@ -111,7 +112,7 @@
 
   @media (max-width:600px){
     .wrap{padding:30px 16px 48px}
-    h1{font-size:27px} h2{font-size:21px}
+    h1{font-size:var(--fs-h1)} h2{font-size:var(--fs-h2)}
     ul.areas{grid-template-columns:1fr}
     .fit,.lenses{padding:20px 18px 22px}
     .next{padding:24px 20px 26px}
