@@ -45,7 +45,7 @@
   .micro{margin-top:12px;font-size:var(--fs-small);color:var(--fg-muted);font-weight:var(--fw-body)}
 
   section{margin:0 0 52px}
-  h2{font-family:var(--font-display);font-size:var(--fs-h2);margin:0 0 18px;font-weight:var(--fw-head);line-height:1.3;color:var(--fg)}
+  h2{font-family:var(--font-display);font-size:var(--fs-h2);margin:0 0 18px;font-weight:var(--fw-section);line-height:1.3;color:var(--fg)}
   .more{margin-top:16px;font-size:var(--fs-body)}
 
   /* בלוק 1: התגיות */
@@ -65,16 +65,14 @@
   }
   .free{display:block;margin-top:6px;font-size:var(--fs-small);font-weight:var(--fw-strong);color:var(--olive-700)}
 
-  /* בלוק 3: מי מאחורי זה */
+  /* בלוק 3: גליה (27.9.2026: הכותרת "מי מאחורי זה" הוסרה לבקשת גליה) */
   .me{background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:26px 26px 24px}
-  .me h2{margin-bottom:16px}
   .who{display:flex;align-items:center;gap:16px;margin-bottom:22px}
   .who img{width:60px;height:60px;flex:0 0 auto}
   .who .nm{font-weight:var(--fw-strong);font-size:var(--fs-body);color:var(--fg)}
   .who .rl{font-size:var(--fs-body);color:var(--fg-soft);font-weight:var(--fw-body)}
   dl.nums{margin:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   dl.nums>div{border-top:2px solid var(--accent-fill);padding-top:12px}
-  /* המספרים ב-Heebo: בגופן התצוגה סימן ה-₪ נראה כמו האות ש */
   dl.nums dt{font-family:var(--font-body);font-size:var(--fs-h2);font-weight:var(--fw-heavy);line-height:1.2;color:var(--fg)}
   dl.nums dd{margin:4px 0 0;font-size:var(--fs-small);color:var(--fg-soft);font-weight:var(--fw-body);line-height:1.45}
   dl.nums .biz{display:block;color:var(--ink-550);font-weight:var(--fw-body);font-size:var(--fs-small)}
@@ -113,6 +111,7 @@
 <!-- MENU:START -->
   <nav class="nav" aria-label="ניווט ראשי">
     <ul>
+      <li><a href="./" aria-current="page">בית</a></li>
       <li><a href="diagnosis.html">אבחון עסקי</a></li>
       <li><a href="services.html">שירותים</a></li>
       <li><a href="about.html">אודות</a></li>
@@ -155,8 +154,7 @@
   <p class="more"><a href="services.html">כל הפרטים ←</a></p>
 </section>
 
-<section class="me" aria-labelledby="h-block3">
-  <h2 id="h-block3">מי מאחורי זה</h2>
+<section class="me" aria-label="גליה ארליך">
   <div class="who">
     <img src="assets/itb-mark-terracotta.svg" alt="" width="60" height="60">
     <div>

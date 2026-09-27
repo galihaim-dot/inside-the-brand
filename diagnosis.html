@@ -53,7 +53,6 @@
     --olive-fill:var(--olive-600);
     --olive-text:var(--olive-700);
     --rule:var(--paper-500);
-    --font-display:"Frank Ruhl Libre",Georgia,serif;
   }
   *{box-sizing:border-box}
   html{background:var(--paper)}
@@ -91,7 +90,7 @@
 
   /* ── טופס ── */
   .q-head{border-top:2px solid var(--ink);padding-top:34px;margin-bottom:30px}
-  .q-head h2{font-family:var(--font-display);font-size:var(--fs-h2);font-weight:var(--fw-head);margin:0 0 8px;letter-spacing:0}
+  .q-head h2{font-family:var(--font-display);font-size:var(--fs-h2);font-weight:var(--fw-section);margin:0 0 8px;letter-spacing:0}
   .q-sub{margin:0;color:var(--ink-soft);font-weight:var(--fw-body);font-size:var(--fs-body);max-width:64ch}
   .q-note{margin:8px 0 0;color:var(--ink-faint);font-weight:var(--fw-body);font-size:var(--fs-small)}
 
@@ -130,7 +129,7 @@
   .submit:disabled{opacity:.6;cursor:default}
 
   #thanks{display:none;padding:24px 0}
-  #thanks h2{font-family:var(--font-display);font-size:var(--fs-h2);font-weight:var(--fw-head);margin:0 0 12px}
+  #thanks h2{font-family:var(--font-display);font-size:var(--fs-h2);font-weight:var(--fw-section);margin:0 0 12px}
   #thanks p{color:var(--ink-soft);max-width:60ch;margin:0 0 8px;font-weight:var(--fw-body)}
   #thanks .ty-contact{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);font-size:var(--fs-small)}
 
@@ -198,6 +197,7 @@
 <!-- MENU:START -->
   <nav class="nav" aria-label="ניווט ראשי">
     <ul>
+      <li><a href="./">בית</a></li>
       <li><a href="diagnosis.html" aria-current="page">אבחון עסקי</a></li>
       <li><a href="services.html">שירותים</a></li>
       <li><a href="about.html">אודות</a></li>

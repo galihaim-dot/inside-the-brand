@@ -88,7 +88,9 @@
   --accent-tint:  var(--terra-050);
 
   /* ---------- טיפוגרפיה ---------- */
-  --font-display: "Frank Ruhl Libre", Georgia, serif;   /* לוגו וכותרות */
+  /* 27.9.2026: הכותרות עברו ל-Heebo, אותו פונט כמו הגוף. ההבדל בין כותרת לטקסט
+     הוא בגודל ובעובי בלבד. Frank Ruhl Libre נשאר רק בתוך הלוגו, שכבר מומר לצורות. */
+  --font-display: "Heebo", "Assistant", Arial, sans-serif;   /* כותרות */
   --font-body:    "Heebo", "Assistant", Arial, sans-serif;
 }
 
