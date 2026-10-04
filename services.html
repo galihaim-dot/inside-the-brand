@@ -80,9 +80,7 @@
   .me{display:flex;align-items:center;gap:16px;background:var(--surface-card);border:1px solid var(--paper-500);border-radius:3px;padding:18px 20px}
   .me .photo{
     flex:0 0 auto;width:60px;height:60px;border-radius:50%;
-    background:var(--accent-fill);color:var(--paper);
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--font-display);font-size:var(--fs-h3);font-weight:var(--fw-section);margin:0;
+    object-fit:cover;display:block;background:var(--paper-500);margin:0;
   }
   .me p{margin:0;max-width:none}
   .me .nm{color:var(--fg);font-weight:var(--fw-strong);font-size:var(--fs-body)}
@@ -220,7 +218,7 @@
 <section>
   <h2>קצת עליי</h2>
   <div class="me">
-    <p class="photo" aria-hidden="true">גא</p>
+    <img class="photo" src="assets/galia.jpg" alt="" width="60" height="60">
     <div>
       <p class="nm">גליה ארליך</p>
       <p class="rl">מובילת אי־קומרס ועסקים דיגיטליים.</p>
