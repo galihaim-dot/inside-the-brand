@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="same-origin">
 <title>Inside the Brand · גליה ארליך</title>
-<meta name="description" content="אבחון, תוכנית עבודה והטמעה בשטח לעסקים קטנים ובינוניים. שיווק, תפעול, מערכות ורווחיות, כמערכת אחת.">
+<meta name="description" content="לבעלי עסקים עם מוצר או שירות, שהמכירות שלהם לא מתרוממות: כשאין אתר, כשהוא לא מביא לקוחות, או כשהמחזור תקוע באותו מספר. אבחון, תוכנית והטמעה בשטח.">
 <link rel="icon" href="assets/itb-favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/itb-favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/itb-favicon-180.png">
@@ -36,6 +36,12 @@
   .hero h1{font-family:var(--font-display);font-size:var(--fs-h1);line-height:1.2;font-weight:var(--fw-head);margin:0 0 10px;color:var(--fg)}
   .hero .h1-2{font-family:var(--font-display);font-size:var(--fs-h2);line-height:1.35;font-weight:var(--fw-sub);color:var(--accent-deep);margin:0 0 22px}
   .hero .lede{color:var(--fg-soft);font-weight:var(--fw-body);max-width:52ch;margin:0 auto 30px}
+  /* 17.10.2026: המסך הראשון אומר למי הדף מיועד. מי שנוחת מזהה את עצמו באחת משלוש השורות. */
+  .hero .kicker{font-size:var(--fs-label);font-weight:var(--fw-heavy);letter-spacing:.04em;color:var(--accent-deep);margin:0 0 14px}
+  ul.states{list-style:none;margin:22px auto 26px;padding:0;max-width:520px;display:flex;flex-direction:column;gap:10px;text-align:right}
+  ul.states li{background:var(--surface-card);border:1px solid var(--paper-500);border-right:4px solid var(--accent);
+    border-radius:3px;padding:11px 16px;font-weight:var(--fw-strong);line-height:1.45}
+  .hero .lede.after-states{margin-bottom:28px}
   .cta{
     display:inline-block;background:var(--accent-fill);color:var(--paper);
     text-decoration:none;font-weight:var(--fw-heavy);font-size:var(--fs-body);padding:14px 34px;border-radius:3px;
@@ -124,9 +130,14 @@
 <main class="wrap">
 
 <header class="hero">
-  <h1>העסק עובד, אבל מרגיש תקוע?</h1>
-  <p class="h1-2">אני עוזרת לכם להבין את מקור הבעיה, ומסדרת.</p>
-  <p class="lede">אבחון, תוכנית עבודה והטמעה בשטח לעסקים קטנים ובינוניים. שיווק, תפעול, מערכות ורווחיות, כמערכת אחת.</p>
+  <p class="kicker">לבעלי עסקים עם מוצר או שירות</p>
+  <h1>המכירות לא מתרוממות?</h1>
+  <ul class="states">
+    <li>עוד אין לכם אתר, או שהניסיון הקודם נגמר באכזבה.</li>
+    <li>יש אתר, ומעט מדי לקוחות מגיעים דרכו.</li>
+    <li>יש מחזור, והוא תקוע באותו מספר כבר חודשים.</li>
+  </ul>
+  <p class="lede after-states">אני לא בונה אתרים. אני מניחה את התשתית שהכול נשען עליה: תהליכים, אסטרטגיה ועמודי התווך. כך הצמיחה נמשכת גם אחרי שאני יוצאת.</p>
   <a class="cta" href="diagnosis.html">מתחילים בשאלון קצר ←</a>
   <p class="micro">10 דקות · בחינם · בסופו תקבלו תמונת מצב</p>
 </header>
