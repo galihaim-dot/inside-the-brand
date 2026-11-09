@@ -20,7 +20,7 @@
 
 .masthead{
   border-bottom:1px solid var(--paper-500);
-  padding:18px max(24px, calc((100% - 1104px) / 2));
+  padding:18px max(48px, calc((100% - 1104px) / 2));
   display:flex;flex-direction:row-reverse;align-items:center;justify-content:space-between;gap:12px 28px;
 }
 .masthead .logo{margin:0;max-width:none;line-height:0}
@@ -29,26 +29,32 @@
 
 .masthead .nav{margin:0}
 .masthead .nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 28px}
+/* עמודים שקובעים מרווח ל-li משלהם (הצהרת הנגישות, מדיניות הפרטיות) לא מזיזים את התפריט */
+.masthead .nav li{margin:0}
 .masthead .nav a{
   display:inline-block;padding:3px 1px;
   color:var(--fg-soft);text-decoration:none;
   font-size:var(--fs-small);font-weight:var(--fw-body);line-height:1.6;
   border-bottom:2px solid transparent;
 }
+/* הקישור לשאלון בולט בצבע ובעובי, בלי קו: הקו שמור לסימון העמוד הנוכחי.
+   טרהקוטה כהה מול נייר: 7.8. הכלל בא לפני :hover ו-aria-current, כדי ששניהם יגברו עליו. */
+.masthead .nav a.q{color:var(--accent-deep);font-weight:var(--fw-strong)}
 .masthead .nav a:hover{color:var(--fg);border-bottom-color:var(--paper-500)}
 .masthead .nav a[aria-current="page"]{color:var(--fg);font-weight:var(--fw-strong);border-bottom-color:var(--accent)}
-/* הקישור לשאלון: טקסט בטרהקוטה כהה (7.8 מול נייר), והקו בטרהקוטה הוא קישוט */
-.masthead .nav a.q{color:var(--accent-deep);font-weight:var(--fw-strong);border-bottom-color:var(--accent)}
 .masthead .nav a:focus-visible{outline:3px solid var(--accent-deep);outline-offset:3px;border-radius:2px}
 
 /* הלוגו הוא קישור לדף הבית (24.9.2026) */
 .masthead .home-link{display:inline-block}
 .masthead .home-link:focus-visible{outline:3px solid var(--terra-700);outline-offset:4px;border-radius:2px}
 
+@media (max-width:760px){
+  .masthead{padding-inline:20px}
+}
 @media (max-width:600px){
   .masthead{flex-direction:column;align-items:stretch;padding:14px 20px 10px}
   .masthead .logo{align-self:flex-end}
-  .masthead .logo img{width:108px}
+  .masthead .logo img{width:110px}  /* המינימום בקובץ ה-README של הלוגו */
   .masthead .nav ul{gap:4px 22px}
   .masthead + .wrap{padding-top:44px}
 }
