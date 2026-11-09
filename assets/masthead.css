@@ -1,84 +1,56 @@
 /* ────────────────────────────────────────────────────────────
-   ראש העמוד — אותו מיקום לוגו בכל עמודי האתר.
+   ראש העמוד: אותו לוגו ואותו תפריט בכל עמודי האתר.
 
-   החלטה של גליה, 18.9.2026: הלוגו ממורכז בפס עליון משלו, קטן,
-   ועם מרווח לפני שהתוכן מתחיל. כל עמוד באתר טוען את הקובץ הזה
-   ומשתמש באותו markup. לא משנים מיקום או גודל בתוך עמוד בודד;
-   משנים כאן, וזה משתנה בכל העמודים.
+   9.11.2026, החלטה של גליה יחד עם עמוד הבית החדש: הלוגו בצד שמאל,
+   והתפריט בצד ימין, בשורה אחת. בעברית העין מתחילה מימין ופוגשת קודם
+   את התפריט, והלוגו סוגר את השורה. הלוקאפ נקרא משמאל לימין, ולכן
+   בצד שמאל הוא לא נמשך נגד הכיוון שלו (זו הייתה הסיבה למרכז מ־18.9).
+   התפריט: שירותים · אודות · יצירת קשר · לשאלון. "בית" יצא, כי הלוגו
+   הוא הקישור לדף הבית. "לשאלון" (לשעבר "אבחון עסקי") מודגש.
 
    <div class="masthead">
-     <p class="logo">
-       <img class="light" src="assets/itb-lockup-primary.svg" alt="Inside the Brand" width="150" height="44">
-     </p>
+     <p class="logo"><a href="./" class="home-link"><img …></a></p>
+     <nav class="nav">…</nav>
    </div>
-   <div class="wrap"> …
 
-   למה במרכז: הלוקאפ נקרא משמאל לימין, ולכן הצמדה לקצה הימני של
-   עמוד בעברית מושכת אותו נגד הכיוון שלו.
-   מרווח סביב הלוגו: לפחות ברוחב הסמל מכל צד (README של הלוגו).
-   מינימום: 110px רוחב.
-
-   ההחלפה בין לוגו בהיר לכהה נשארת בכל עמוד בנפרד, כי רק עמוד שיש
-   לו מצב כהה רשאי להחליף. אחרת הלוגו עם הטקסט הבהיר נוחת על עמוד
-   בהיר ונעלם.
+   בלי כפתור המבורגר: ארבעה קישורים קצרים. בטלפון הלוגו בשורה אחת
+   והתפריט בשורה מתחתיו. אין מה לפתוח ואין סקריפט.
+   משנים כאן, וזה משתנה בכל העמודים.
    ──────────────────────────────────────────────────────────── */
 
-.masthead{border-bottom:1px solid var(--paper-500);padding:22px 24px}
-/* max-width:none — עמודים שמגבילים רוחב פסקה (למשל p{max-width:64ch})
-   היו מושכים את הלוגו ימינה מהמרכז במסך רחב */
-.masthead .logo{margin:0;max-width:none;text-align:center}
-.masthead .logo img{width:150px;height:auto;margin:0 auto;vertical-align:top}
+.masthead{
+  border-bottom:1px solid var(--paper-500);
+  padding:18px max(24px, calc((100% - 1104px) / 2));
+  display:flex;flex-direction:row-reverse;align-items:center;justify-content:space-between;gap:12px 28px;
+}
+.masthead .logo{margin:0;max-width:none;line-height:0}
+.masthead .logo img{width:120px;height:auto;vertical-align:top}
 .masthead + .wrap{padding-top:64px}
 
-@media (max-width:520px){
-  .masthead{padding:16px 20px}
-  .masthead .logo img{width:130px}
-  .masthead + .wrap{padding-top:44px}
-}
-
-/* ────────────────────────────────────────────────────────────
-   התפריט הראשי — נוסף 23.9.2026.
-
-   יושב בתוך אותה רצועה עליונה, מתחת ללוגו הממורכז.
-   ארבעה קישורים קצרים, ולכן שורה אחת שנשברת לשתיים בטלפון
-   במקום כפתור המבורגר: אין מה לפתוח ואין מה לסגור, זה עובד
-   במקלדת ובקורא מסך בלי שורת קוד אחת, ולא נוסף שום סקריפט.
-   כשיתווספו קישורים (למשל "מאמרים" כשהבלוג יעלה) נשקול שוב.
-
-   העמוד הנוכחי מסומן ב-aria-current="page", וקורא מסך אומר
-   "העמוד הנוכחי". הקו מתחתיו בטרהקוטה הוא דקורטיבי בלבד,
-   והצבע של הטקסט עצמו הוא --ink ולכן הניגודיות עומדת בתקן.
-   ──────────────────────────────────────────────────────────── */
-
-.masthead .nav{margin:16px 0 0}
-.masthead .nav ul{
-  list-style:none;margin:0;padding:0;
-  display:flex;flex-wrap:wrap;justify-content:center;gap:6px 28px;
-}
+.masthead .nav{margin:0}
+.masthead .nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 28px}
 .masthead .nav a{
   display:inline-block;padding:3px 1px;
   color:var(--fg-soft);text-decoration:none;
-  font-size:var(--fs-body);font-weight:var(--fw-body);line-height:1.6;
+  font-size:var(--fs-small);font-weight:var(--fw-body);line-height:1.6;
   border-bottom:2px solid transparent;
 }
 .masthead .nav a:hover{color:var(--fg);border-bottom-color:var(--paper-500)}
 .masthead .nav a[aria-current="page"]{color:var(--fg);font-weight:var(--fw-strong);border-bottom-color:var(--accent)}
+/* הקישור לשאלון: טקסט בטרהקוטה כהה (7.8 מול נייר), והקו בטרהקוטה הוא קישוט */
+.masthead .nav a.q{color:var(--accent-deep);font-weight:var(--fw-strong);border-bottom-color:var(--accent)}
 .masthead .nav a:focus-visible{outline:3px solid var(--accent-deep);outline-offset:3px;border-radius:2px}
-
-@media (max-width:520px){
-  .masthead .nav{margin:12px 0 0}
-  .masthead .nav ul{gap:4px 20px}
-  .masthead .nav a{font-size:var(--fs-small)}
-}
 
 /* הלוגו הוא קישור לדף הבית (24.9.2026) */
 .masthead .home-link{display:inline-block}
 .masthead .home-link:focus-visible{outline:3px solid var(--terra-700);outline-offset:4px;border-radius:2px}
 
-/* 27.9.2026: חמישה קישורים ("בית" נוסף). בטלפון צר (360) "יצירת קשר" ירד
-   לבד לשורה שנייה; מרווח קטן יותר בין הקישורים מחזיר את התפריט לשורה אחת. */
-@media (max-width:380px){
-  .masthead .nav ul{gap:4px 14px}
+@media (max-width:600px){
+  .masthead{flex-direction:column;align-items:stretch;padding:14px 20px 10px}
+  .masthead .logo{align-self:flex-end}
+  .masthead .logo img{width:108px}
+  .masthead .nav ul{gap:4px 22px}
+  .masthead + .wrap{padding-top:44px}
 }
 
 /* קישור דילוג לתוכן (1.11.2026). מוסתר עד לחיצת Tab ראשונה, ואז מופיע
